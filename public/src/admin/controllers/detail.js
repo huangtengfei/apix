@@ -1,8 +1,8 @@
 angular.module('auth').controller('DetailCtrl', DetailCtrl);
 
-DetailCtrl.$inject = ['$timeout', '$state', '$location', '$anchorScroll', 'DataService'];
+DetailCtrl.$inject = ['$timeout', '$stateParams', '$state', '$location', '$anchorScroll', 'DataService'];
 
-function DetailCtrl($timeout, $state, $location, $anchorScroll, DataService) {
+function DetailCtrl($timeout, $stateParams, $state, $location, $anchorScroll, DataService) {
 
 	var vm = this;
 
@@ -11,6 +11,13 @@ function DetailCtrl($timeout, $state, $location, $anchorScroll, DataService) {
 	vm.goto = function(target) {
 		$location.hash(target.guid);
         $anchorScroll();
+	}
+
+	vm.create = function(group) {
+		$state.go('New', {
+			name: $stateParams.name,
+			guid: group.guid
+		});
 	}
 
 	vm.init = function() {

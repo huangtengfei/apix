@@ -38,8 +38,10 @@
 			})
 			.state('New', {
 				parent: 'Main',
-				url: '/new',
+				url: '/systems/:name/:guid',
 				templateUrl: 'src/admin/templates/new.html',
+				controller: 'NewCtrl',
+				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})
 	}])
