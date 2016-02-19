@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="auth">
+<head>
+	<meta charset="UTF-8">
+	<title>ApiX</title>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div ui-view></div>
+
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/ui-router/angular-ui-router.min.js"></script>
+	<script src="src/app.js"></script>
+
+	<!-- 登录模块 -->
+	<script src="src/auth/controllers/login.js"></script>
+	<script src="src/auth/services/user.js"></script>
+	<script src="src/auth/services/token.js"></script>
+
+	<!-- 公用模块 -->
+	<script src="src/common/controllers/main.js"></script>
+
+	<!-- 其他模块 -->
+	<script src="src/admin/controllers/systems.js"></script>
+	<script src="src/admin/controllers/detail.js"></script>
+	<script src="src/admin/services/data.js"></script>
+</body>
+</html>
