@@ -11,9 +11,24 @@ const mongo = require('./mongo');
 
 let api = {};
 
-api.list = (req, res) => {
+api.listSystems = (req, res) => {
 	let tokendata = req._tokendata;
-	mongo.getTodos(tokendata.username, res);
+	mongo.listSystems(tokendata.id, res);
+}
+
+api.listGroups = (req, res) => {
+	let params = req.query;
+	mongo.listGroups(params.id, res);
+}
+
+api.listApis = (req, res) => {
+	let params = req.query;
+	mongo.listApis(params.id, res);
+}
+
+api.createApi = (req, res) => {
+	let params = req.body;
+	mongo.createApi(params, res);
 }
 
 module.exports = api;

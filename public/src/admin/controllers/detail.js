@@ -8,88 +8,47 @@ function DetailCtrl($timeout, $stateParams, $state, $location, $anchorScroll, Da
 
 	vm.formData = {};
 
+	vm.cmOption = {
+		theme: '3024-day',
+		readOnly: true,
+		mode: {name: "javascript", json: true}
+	}
+
 	vm.goto = function(target) {
-		$location.hash(target.guid);
+		$location.hash(target._id);
         $anchorScroll();
 	}
 
 	vm.create = function(group) {
 		$state.go('New', {
-			name: $stateParams.name,
-			guid: group.guid
+			systemId: $stateParams.id,
+			groupId: group._id
 		});
 	}
-
+  
 	vm.init = function() {
-		vm.sys = {
-			id: '10001',
-			name: 'sncp',
-			groups: [{
-				guid: '101',
-				name: 'User',
-				apis: [{
-					guid: '1001',
-					name: '创建一个新用户',
-					description: '创建一个新用户，第一版本',
-					method: 'post',
-					url: '/user',
-					request: [{
-						field: 'username',
-						type: 'String',
-						description: '用户名'
-					},{
-						field: 'email',
-						type: 'String',
-						description: '用户邮箱'
-					}],
-					response: [{
-						field: 'id',
-						type: 'String',
-						description: '用户id'
-					}]
-				}, {
-					guid: '1002',
-					name: '更新一个用户',
-					description: '更新一个用户，第一版本',
-					method: 'put',
-					url: '/user/:id',
-					request: [{
-						field: 'username',
-						type: 'String',
-						description: '用户名'
-					},{
-						field: 'email',
-						type: 'String',
-						description: '用户邮箱'
-					}],
-					response: [{
-						field: 'id',
-						type: 'String',
-						description: '用户id'
-					}]
-				}]
-			},{
-				guid: '102',
-				name: 'Disk',
-				apis: [{
-					guid: '1003',
-					name: '创建一个新硬盘',
-					description: '创建一个新硬盘，第一版本',
-					method: 'post',
-					url: '/user',
-					request: [{
-						field: 'name',
-						type: 'String',
-						description: '硬盘名称'
-					}],
-					response: [{
-						field: 'id',
-						type: 'String',
-						description: '硬盘id'
-					}]
-				}]
-			}]
-		}
+
+		var params = {
+			id: $stateParams.id,
+			name: 'abc'
+		};
+
+		DataService.getGroups(params, function(groups){
+			vm.groups = groups;
+			vm.groups.forEach(function(group){
+				var params = {
+					id: group._id
+				}
+				DataService.getApis(params, function(apis){
+					group.apis = apis;
+				}, function(err){
+					console.log(err);
+				})
+			})
+		}, function(err){
+			console.log(err);
+		})
+		
 	}
 
 	vm.init();

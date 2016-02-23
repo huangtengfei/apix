@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 const cert = fs.readFileSync('./server/private.key');	// 加密私钥
-const TOKEN_EXPIRATION = 60;	// token 过期时间，默认单位为s，Eg: 60, "2 days", "10h", "7d"
+const TOKEN_EXPIRATION = '1h';	// token 过期时间，默认单位为s，Eg: 60, "2 days", "10h", "7d"
 
 let util = {};
 

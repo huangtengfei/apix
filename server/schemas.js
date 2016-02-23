@@ -15,9 +15,26 @@ schemas.userSchema = new Schema({
     password: String
 });
 
-schemas.todoSchema = new Schema({
-	username: String,
-	todos: []
+schemas.systemSchema = new Schema({
+	userId: String, 
+    name: String,  
+    desc: String
+})
+
+schemas.groupSchema = new Schema({
+	systemId: String,  
+    name: String, 
+    desc: String 
+})
+
+schemas.apiSchema = new Schema({
+	groupId: String,  
+    name: String,   
+    desc: String, 
+    method: Number,
+    url: String, 
+    request: String,
+    response: String
 })
 
 module.exports = schemas;

@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('auth', ['ui.router']);
+	var app = angular.module('auth', ['ui.router', 'ui.codemirror']);
 
 	app.value('baseUrl', 'localhost:3000/');
 
@@ -27,23 +27,23 @@
 				controller: 'SystemsCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})
+			})			
 			.state('Detail', {
 				parent: 'Main',
-				url: '/systems/:name',
+				url: '/systems/:id',
 				templateUrl: 'src/admin/templates/detail.html',
 				controller: 'DetailCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})
+			})		
 			.state('New', {
 				parent: 'Main',
-				url: '/systems/:name/:guid',
+				url: '/systems/:systemId/:groupId',
 				templateUrl: 'src/admin/templates/new.html',
 				controller: 'NewCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})
+			})	
 	}])
 
 	app.config(function($httpProvider) {

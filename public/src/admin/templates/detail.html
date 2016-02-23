@@ -1,7 +1,7 @@
 <div class="col-xs-12">
 	<div class="col-xs-3">
-		<div class="list-group" ng-repeat="group in vm.sys.groups">
-			<a href="" class="list-group-item active">
+		<div class="list-group" ng-repeat="group in vm.groups">
+			<a href="javascript:void(0);" class="list-group-item active" >
 				{{group.name}}
 				<span class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ng-click="vm.create(group)">
 				</span>
@@ -13,58 +13,28 @@
 	</div>
 
 	<div class="col-xs-9">
-		<div ng-repeat="group in vm.sys.groups" id="{{group.guid}}">
+		<div ng-repeat="group in vm.groups" id="{{group._id}}">
 			<div class="well" style="font-size: 16px; font-weight: 700;">{{group.name}}</div>
-			<div class="panel panel-default" ng-repeat="api in group.apis" id="{{api.guid}}">
+			<div class="panel panel-default" ng-repeat="api in group.apis" id="{{api._id}}">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">{{api.name}}</h3>
 			  </div>
 			  <div class="panel-body">
 			    <p>
-			    	{{api.description}}
+			    	{{api.desc}}
 			    </p>
 					<p>
-						<span class="label label-success">{{api.method}}</span>
+						<span class="label label-success">{{api.method | methodFilter}}</span>
 					</p>
 					<p>
 						<code style="display: block; padding: 5px; ">
 							{{api.url}}
 						</code>
 					</p>
-					<table class="table table-bordered">
-						<caption>输入参数</caption>
-					  <thead>
-					  	<tr>
-					  		<th width="25%">字段</th>
-					  		<th width="25%">类型</th>
-					  		<th>描述</th>
-					  	</tr>
-					  </thead>
-					  <tbody>
-					  	<tr ng-repeat="req in api.request">
-					  		<td>{{req.field}}</td>
-					  		<td>{{req.type}}</td>
-					  		<td>{{req.description}}</td>
-					  	</tr>
-					  </tbody>
-					</table>
-					<table class="table table-bordered">
-						<caption>输出参数</caption>
-					  <thead>
-					  	<tr>
-					  		<th width="25%">字段</th>
-					  		<th width="25%">类型</th>
-					  		<th>描述</th>
-					  	</tr>
-					  </thead>
-					  <tbody>
-					  	<tr ng-repeat="resp in api.response">
-					  		<td>{{resp.field}}</td>
-					  		<td>{{resp.type}}</td>
-					  		<td>{{resp.description}}</td>
-					  	</tr>
-					  </tbody>
-					</table>
+					<p>输入参数</p>
+					<textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.request"></textarea>
+					<p>输出参数</p>
+					<textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.response"></textarea>				
 			  </div>
 			</div>
 		</div>

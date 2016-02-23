@@ -4,8 +4,17 @@ DataService.$inject = ['$http', 'baseUrl'];
 
 function DataService($http) {
     return {
-        list: function(succ, err){
-            $http.get('/list').success(succ).error(err);
+        getSystems: function(succ, err){
+            $http.get('/api/systems').success(succ).error(err);
+        },
+        getGroups: function(params, succ, err){
+        	$http.get('/api/groups', {params: params}).success(succ).error(err);
+        },
+        getApis: function(params, succ, err){
+        	$http.get('/api/apis', {params: params}).success(succ).error(err);
+        },
+        createApi: function(params, succ, err){
+            $http.post('/api/apis', params).success(succ).error(err);
         }
     }
 }

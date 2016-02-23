@@ -2,19 +2,19 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">名称</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="API名称">
+      <input type="text" class="form-control" placeholder="API名称" ng-model="vm.api.name">
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">描述</label>
     <div class="col-sm-10">
-      <textarea name="" class="form-control" placeholder="API描述"></textarea>
+      <textarea name="" class="form-control" placeholder="API描述" ng-model="vm.api.desc"></textarea>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">类型</label>
     <div class="col-sm-10">
-      <select class="form-control">
+      <select class="form-control" ng-model="vm.api.method">
       	<option value="1">GET</option>
       	<option value="2">POST</option>
       	<option value="3">PUT</option>
@@ -23,51 +23,26 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">输入参数</label>
+    <label class="col-sm-2 control-label">API URL</label>
     <div class="col-sm-10">
-      <table class="table table-bordered">
-			  <thead>
-			  	<tr>
-			  		<th width="25%">字段</th>
-			  		<th width="25%">类型</th>
-			  		<th>描述</th>
-			  		<th width="5%">操作</th>
-			  	</tr>
-			  </thead>
-			  <tbody>
-			  	<tr ng-repeat="p in vm.api.inputParams">
-			  		<td>
-							<input type="text" class="form-control" ng-model="p.field">
-			  		</td>
-			  		<td>
-			  			<select class="form-control" ng-model="p.type">
-			  				<option value="1">String</option>
-			  				<option value="2">Number</option>
-			  				<option value="3">Date</option>
-			  			</select>
-			  		</td>
-						<td>
-							<input type="text" class="form-control" ng-model="p.description">
-						</td>
-						<td style="vertical-align: middle; text-align: center;">
-							<a href="" ng-click="vm.removeInput($index)">
-								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							</a>
-						</td>
-			  	</tr>
-			  	<tr>
-			  		<td colspan="4" style="text-align: center;"> 
-			  			<span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="vm.addInput()">
-			  			</span>
-			  		</td>
-			  	</tr>
-			  </tbody>
-			</table>
+      <input type="text" class="form-control" placeholder="/api/xxx" ng-model="vm.api.url">
     </div>
   </div>
   <div class="form-group">
+    <label class="col-sm-2 control-label">输入参数</label>
+    <div class="col-sm-10">
+      <textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="vm.api.request"></textarea>
+    </div>  
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">输出参数</label>
+    <div class="col-sm-10">
+      <textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="vm.api.response"></textarea>
+    </div>  
+  </div>
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Sign in</button>
+      <button type="submit" class="btn btn-primary" ng-click="vm.submit()">Submit</button>
     </div>
   </div>
 </form>

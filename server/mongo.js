@@ -12,10 +12,12 @@ const mongoose = require('mongoose');
 const util = require('./util');
 const schemas = require('./schemas');
 
-let db = mongoose.createConnection('localhost', 'auth');
+let db = mongoose.createConnection('localhost', 'apix');
 
 let UserModel = db.model('User', schemas.userSchema),
-	TodoModel = db.model('Todo', schemas.todoSchema);
+	SystemModel = db.model('System', schemas.systemSchema),
+	GroupModel = db.model('Group', schemas.groupSchema),
+	ApiModel = db.model('Api', schemas.apiSchema);
 
 let mongo = {};
 
@@ -46,8 +48,8 @@ mongo.login = (username, password, res) => {
 	})
 };
 
-mongo.getTodos = (username, res) => {
-	TodoModel.find({username: username}, (err, doc) => {
+mongo.listSystems = (userId, res) => {
+	SystemModel.find({userId: userId}, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
@@ -57,6 +59,47 @@ mongo.getTodos = (username, res) => {
 		}else{
 			return res.sendStatus(404);
 		}
+	})
+}
+
+mongo.listGroups = (systemId, res) => {
+	GroupModel.find({systemId: systemId}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+}
+
+mongo.listApis = (groupId, res) => {
+	console.log(groupId);
+	ApiModel.find({groupId: groupId}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+}
+
+mongo.createApi = (apiData, res) => {
+	var api = new ApiModel(apiData);
+	api.save((err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		console.log(doc);
+		return res.json(doc);
 	})
 }
 
