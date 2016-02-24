@@ -91,8 +91,21 @@ mongo.listApis = (groupId, res) => {
 	})
 }
 
+mongo.createGroup = (groupData, res) => {
+	let group = new GroupModel(groupData);
+	group.save((err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		console.log(doc);
+		return res.json(doc);
+	})
+}
+
+
 mongo.createApi = (apiData, res) => {
-	var api = new ApiModel(apiData);
+	let api = new ApiModel(apiData);
 	api.save((err, doc) => {
 		if(err){
 			console.log(err);
@@ -100,6 +113,22 @@ mongo.createApi = (apiData, res) => {
 		}
 		console.log(doc);
 		return res.json(doc);
+	})
+}
+
+mongo.getApi = (apiId, res) => {
+	console.log(apiId);
+	ApiModel.findOne({_id: apiId}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		console.log(doc);
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
 	})
 }
 

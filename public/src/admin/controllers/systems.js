@@ -10,7 +10,7 @@ function SystemsCtrl($timeout, $state, DataService) {
 
 	vm.viewSys = function(sys) {
 		$state.go('Detail', {
-			id: sys._id
+			systemId: sys._id
 		})
 	}
 

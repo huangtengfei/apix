@@ -9,7 +9,7 @@ function DetailCtrl($timeout, $stateParams, $state, $location, $anchorScroll, Da
 	vm.formData = {};
 
 	vm.cmOption = {
-		theme: '3024-day',
+		theme: 'paraiso-dark',
 		readOnly: true,
 		mode: {name: "javascript", json: true}
 	}
@@ -19,17 +19,23 @@ function DetailCtrl($timeout, $stateParams, $state, $location, $anchorScroll, Da
         $anchorScroll();
 	}
 
-	vm.create = function(group) {
-		$state.go('New', {
-			systemId: $stateParams.id,
+	vm.addApi = function(group) {
+		$state.go('AddApi', {
+			systemId: $stateParams.systemId,
 			groupId: group._id
+		});
+	}
+
+	vm.addGroup = function(group) {
+		$state.go('AddGroup', {
+			systemId: $stateParams.systemId
 		});
 	}
   
 	vm.init = function() {
 
 		var params = {
-			id: $stateParams.id,
+			id: $stateParams.systemId,
 			name: 'abc'
 		};
 

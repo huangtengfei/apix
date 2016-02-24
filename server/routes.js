@@ -19,7 +19,9 @@ function routes(app) {
 	app.get('/api/systems', auth.verifyToken, api.listSystems);
 	app.get('/api/groups', auth.verifyToken, api.listGroups);
 	app.get('/api/apis', auth.verifyToken, api.listApis);
+	app.post('/api/groups', auth.verifyToken, api.createGroup);
 	app.post('/api/apis', auth.verifyToken, api.createApi);
+	app.get('/api/api', auth.verifyToken, api.getApi);
 
 
 }

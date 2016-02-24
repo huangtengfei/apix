@@ -15,6 +15,12 @@ function DataService($http) {
         },
         createApi: function(params, succ, err){
             $http.post('/api/apis', params).success(succ).error(err);
-        }
+        },
+        createGroup: function(params, succ, err){
+            $http.post('/api/groups', params).success(succ).error(err);
+        },
+        getApi: function(params, succ, err){
+            $http.get('/api/api', {params: params}).success(succ).error(err);
+        },
     }
 }

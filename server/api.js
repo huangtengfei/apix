@@ -26,9 +26,19 @@ api.listApis = (req, res) => {
 	mongo.listApis(params.id, res);
 }
 
+api.createGroup = (req, res) => {
+	let params = req.body;
+	mongo.createGroup(params, res);
+}
+
 api.createApi = (req, res) => {
 	let params = req.body;
 	mongo.createApi(params, res);
+}
+
+api.getApi = (req, res) => {
+	let params = req.query;
+	mongo.getApi(params.id, res);
 }
 
 module.exports = api;

@@ -29,21 +29,44 @@
 				access: {requiredLogin: true}
 			})			
 			.state('Detail', {
-				parent: 'Main',
-				url: '/systems/:id',
+				url: '/systems/:systemId',
 				templateUrl: 'src/admin/templates/detail.html',
 				controller: 'DetailCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})		
-			.state('New', {
+			})	
+			.state('AddGroup', {
 				parent: 'Main',
-				url: '/systems/:systemId/:groupId',
-				templateUrl: 'src/admin/templates/new.html',
-				controller: 'NewCtrl',
+				url: '/systems/:systemId/new',
+				templateUrl: 'src/admin/templates/addGroup.html',
+				controller: 'GroupAddCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})		
+			.state('AddApi', {
+				parent: 'Main',
+				url: '/systems/:systemId/:groupId/new',
+				templateUrl: 'src/admin/templates/addApi.html',
+				controller: 'ApiAddCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})	
+			.state('ParamTips', {
+				parent: 'Main',
+				url: '/param-tips',
+				templateUrl: 'src/admin/templates/paramTips.html',
+				controller: 'ParamTipsCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})	
+			.state('TestApi', {
+				// parent: 'Main',
+				url: '/systems/test/:apiId',
+				templateUrl: 'src/admin/templates/testApi.html',
+				controller: 'ApiTestCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})
 	}])
 
 	app.config(function($httpProvider) {
