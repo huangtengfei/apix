@@ -9,6 +9,8 @@ function ApiTestCtrl($stateParams, CommonService, DataService, MockService) {
 	vm.api = {};
 	vm.formData = {};
 
+	//vm.formData.showResp = false;
+
 	vm.formData.params = [];
 	vm.formData.params.push({
 		key: '',
@@ -21,6 +23,26 @@ function ApiTestCtrl($stateParams, CommonService, DataService, MockService) {
 		value: ''
 	})
 
+	vm.formData.body = [];
+	vm.formData.body.push({
+		key: '',
+		value: ''
+	})
+
+	vm.formData.tabs = [{
+		name: 'Params'
+	},{
+		name: 'Headers'
+	},{
+		name: 'Body'
+	}]
+
+	vm.formData.selectedTab = vm.formData.tabs[0];
+
+	vm.selectTab = function(tab) {
+		vm.formData.selectedTab = tab;
+	}
+
 	vm.addOne = function(arr) {
 		arr.push({
 			key: '',
@@ -29,7 +51,9 @@ function ApiTestCtrl($stateParams, CommonService, DataService, MockService) {
 	}
 
 	vm.removeOne = function(arr, index) {
-		arr.splice(index, 1);
+		if(arr.length > 1){
+			arr.splice(index, 1);
+		}
 	}
 
 	vm.send = function() {
@@ -40,6 +64,7 @@ function ApiTestCtrl($stateParams, CommonService, DataService, MockService) {
 		})
 		MockService.getUrl(vm.formData.url, params, function(res){
 			vm.formData.output = JSON.stringify(res);
+			//vm.formData.showResp = true;
 		}, function(err){
 			console.log(err);
 		});
