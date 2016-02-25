@@ -1,8 +1,8 @@
 angular.module('auth').controller('GroupAddCtrl', GroupAddCtrl);
 
-GroupAddCtrl.$inject = ['$timeout', '$stateParams', '$state', 'DataService'];
+GroupAddCtrl.$inject = ['$stateParams', '$state', 'DataService'];
 
-function GroupAddCtrl($timeout, $stateParams, $state, DataService) {
+function GroupAddCtrl($stateParams, $state, DataService) {
 
 	var vm = this;
 

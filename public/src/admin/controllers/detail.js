@@ -1,8 +1,8 @@
 angular.module('auth').controller('DetailCtrl', DetailCtrl);
 
-DetailCtrl.$inject = ['$timeout', '$stateParams', '$state', '$location', '$anchorScroll', 'DataService'];
+DetailCtrl.$inject = ['$stateParams', '$state', '$location', '$anchorScroll', 'DataService'];
 
-function DetailCtrl($timeout, $stateParams, $state, $location, $anchorScroll, DataService) {
+function DetailCtrl($stateParams, $state, $location, $anchorScroll, DataService) {
 
 	var vm = this;
 

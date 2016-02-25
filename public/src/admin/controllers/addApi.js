@@ -1,8 +1,8 @@
 angular.module('auth').controller('ApiAddCtrl', ApiAddCtrl);
 
-ApiAddCtrl.$inject = ['$timeout', '$stateParams', '$state', 'DataService'];
+ApiAddCtrl.$inject = ['$stateParams', '$state', 'DataService'];
 
-function ApiAddCtrl($timeout, $stateParams, $state, DataService) {
+function ApiAddCtrl($stateParams, $state, DataService) {
 
 	var vm = this;
 
