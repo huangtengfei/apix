@@ -6,29 +6,37 @@ function ApiTestCtrl($stateParams, CommonService, DataService, MockService) {
 
 	var vm = this;
 
-	vm.api = {};
-	vm.formData = {};
+	////////////////////////// variables bind to view ///////////////////////////
 
-	//vm.formData.showResp = false;
+	vm.api = {};	// api对象，通过id查得详情
+	vm.formData = {};	// 页面数据
 
-	vm.formData.params = [];
-	vm.formData.params.push({
+	// code-mirror 配置信息
+	vm.cmOption = {
+		theme: 'paraiso-dark',
+		readOnly: true,
+		mode: {name: "javascript", json: true}
+	};
+
+	// request params
+	vm.formData.params = [{
 		key: '',
 		value: ''
-	})
+	}];
 
-	vm.formData.headers = [];
-	vm.formData.headers.push({
+	// request headers
+	vm.formData.headers = [{
 		key: '',
 		value: ''
-	})
+	}];
 
-	vm.formData.body = [];
-	vm.formData.body.push({
+	// request body
+	vm.formData.body = [{
 		key: '',
 		value: ''
-	})
+	}];
 
+	// 模拟请求的tab页
 	vm.formData.tabs = [{
 		name: 'Params'
 	},{
@@ -37,48 +45,53 @@ function ApiTestCtrl($stateParams, CommonService, DataService, MockService) {
 		name: 'Body'
 	}]
 
+	// 初始tab页为params
 	vm.formData.selectedTab = vm.formData.tabs[0];
 
-	vm.selectTab = function(tab) {
+	vm.selectTab = selectTab;	// 选择tab
+	vm.add = add;	// 添加一条param
+	vm.remove = remove;	// 删除一条param
+	vm.send = send;	// 发送请求
+	vm.formatResp = formatResp;	// 格式化response data
+
+	////////////////////////// functions bind to view ///////////////////////////
+
+	function selectTab(tab) {
 		vm.formData.selectedTab = tab;
 	}
 
-	vm.addOne = function(arr) {
+	function add(arr) {
 		arr.push({
 			key: '',
 			value: ''
 		})
 	}
 
-	vm.removeOne = function(arr, index) {
+	function remove(arr, index) {
 		if(arr.length > 1){
 			arr.splice(index, 1);
 		}
 	}
 
-	vm.send = function() {
-		console.log(vm.formData);
+	function send() {
 		var params = {};
 		vm.formData.params.forEach(function(item){
 			params[item.key] = item.value;
 		})
 		MockService.getUrl(vm.formData.url, params, function(res){
 			vm.formData.output = JSON.stringify(res);
-			//vm.formData.showResp = true;
 		}, function(err){
 			console.log(err);
 		});
 	}
 
-	vm.formatResp = function() {
+	function formatResp() {
 		vm.formData.output = CommonService.format(vm.formData.output);
 	}
 
-	vm.cmOption = {
-		theme: 'paraiso-dark',
-		mode: {name: "javascript", json: true}
-	};
+	////////////////////////////// inner functions /////////////////////////////
 
+	// 初始化，根据apiId查询api详情
 	function init(){
 		var params = {
 			id: $stateParams.apiId

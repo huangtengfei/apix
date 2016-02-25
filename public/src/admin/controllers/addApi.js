@@ -6,20 +6,24 @@ function ApiAddCtrl($timeout, $stateParams, $state, DataService) {
 
 	var vm = this;
 
-	vm.api = {};
-	vm.formData = {};
+	vm.api = {};	// api数据
+	vm.formData = {};	// 页面数据
 
-	vm.api.method = 1;
+	vm.api.method = 1;	// api方法默认为GET
 
+	// code-mirror 配置信息
 	vm.cmOption = {
 		theme: 'paraiso-dark',
 		mode: {name: "javascript", json: true}
-	}
+	};
 
-	vm.submit = function() {
+	vm.submit = submit;	// 提交
+
+	////////////////////////// functions bind to view ///////////////////////////
+
+	function submit() {
 		vm.api.groupId = $stateParams.groupId;
 		DataService.createApi(vm.api, function(res){
-			console.log(res);
 			$state.go('Detail', {
 				systemId: $stateParams.systemId
 			})

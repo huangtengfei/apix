@@ -1,13 +1,23 @@
 angular.module('auth').controller('ParamTipsCtrl', ParamTipsCtrl);
 
-ParamTipsCtrl.$inject = ['$state'];
+ParamTipsCtrl.$inject = [];
 
-function ParamTipsCtrl($state) {
+function ParamTipsCtrl() {
 
 	var vm = this;
 
-	vm.formData = {};
+	////////////////////////// variables bind to view ///////////////////////////
 
+	vm.formData = {};	// 页面数据
+
+	// code-mirror 配置信息
+	vm.cmOption = {
+		theme: 'paraiso-dark',
+		readOnly: true,
+		mode: {name: "javascript", json: true}
+	};
+
+	// 输入输出参数书写建议
 	vm.formData.tips = 
 		'/**' +
  		'\n* 说明' +
@@ -29,11 +39,6 @@ function ParamTipsCtrl($state) {
 		'\n\terrMsg: String,		// 失败信息，success表示成功' + 
 		'\n\tdata: Object		// 返回数据' +
 		'\n\t\tid: String		// 用户id' + 
-		'\n}'
-
-	vm.cmOption = {
-		theme: 'paraiso-dark',
-		mode: {name: "javascript", json: true}
-	}
+		'\n}';
 
 }

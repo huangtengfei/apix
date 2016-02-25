@@ -1,58 +1,56 @@
 <div class="api-detail">
-	<div class="left-cont">
-		<div class="list-group" ng-repeat="group in vm.groups">
-			<a href="javascript:void(0);" class="list-group-item active" >
-				{{group.name}}
+    <div class="left-cont">
+        <div class="list-group" ng-repeat="group in vm.groups">
+            <a href="javascript:void(0);" class="list-group-item active">
+                {{group.name}}
 				<span class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ng-click="vm.addApi(group)">
 				</span>
-			</a>
-			<a href="" class="list-group-item" ng-repeat="api in group.apis" ng-click="vm.goto(api)">
-				{{api.name}}
-			</a>
-		</div>
-		<div class="list-group">
-			<a href="javascript:void(0);" class="list-group-item active text-center" ng-click="vm.addGroup()">
+            </a>
+            <a href="" class="list-group-item" ng-repeat="api in group.apis" ng-click="vm.locate(api)">
+                {{api.name}}
+            </a>
+        </div>
+        <div class="list-group">
+            <a href="javascript:void(0);" class="list-group-item active text-center" ng-click="vm.addGroup()">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true">
 				</span>
-			</a>
-		</div>
-		<div class="list-group">
-			<a ui-sref="Systems" class="list-group-item">
-				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>&nbsp;&nbsp;返回系统页面
-			</a>
-		</div>
-	</div>
+            </a>
+        </div>
+        <div class="list-group">
+            <a ui-sref="Systems" class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>&nbsp;&nbsp;返回系统页面
+            </a>
+        </div>
+    </div>
 
-	<div class="right-cont">
-		<div ng-repeat="group in vm.groups" id="{{group._id}}">
-			<div class="well" style="font-size: 16px; font-weight: 700;">{{group.name}}</div>
-			<div class="panel panel-default" ng-repeat="api in group.apis" id="{{api._id}}">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">
-			    {{api.name}}
-			    <a ui-sref="TestApi({apiId: api._id})" target="_blank">
-			    	<span class="label label-danger pull-right">测试</span>
-			    </a>
-			    </h3>
-			  </div>
-			  <div class="panel-body">
-			    <p>
-			    	{{api.desc}}
-			    </p>
-					<p>
-						<span class="label label-success">{{api.method | methodFilter}}</span>
-					</p>
-					<p>
-						<code style="display: block; padding: 5px; ">
-							{{api.url}}
-						</code>
-					</p>
-					<p >输入参数</p>
-					<textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.request"></textarea>
-					<p>输出参数</p>
-					<textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.response"></textarea>				
-			  </div>
-			</div>
-		</div>
-	</div>
+    <div class="right-cont">
+        <div ng-repeat="group in vm.groups" id="{{group._id}}">
+            <div class="well group-name">{{group.name}}</div>
+            <div class="panel panel-default" ng-repeat="api in group.apis" id="{{api._id}}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{api.name}}
+                        <a ui-sref="TestApi({apiId: api._id})" target="_blank">
+                            <span class="label label-danger pull-right">测试</span>
+                        </a>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <p>{{api.desc}}</p>
+                    <p>
+                        <span class="label label-success">{{api.method | methodFilter}}</span>
+                    </p>
+                    <p>
+                        <code>
+                            {{api.url}}
+                        </code>
+                    </p>
+                    <p>输入参数</p>
+                    <textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.request"></textarea>
+                    <p>输出参数</p>
+                    <textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.response"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

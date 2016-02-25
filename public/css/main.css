@@ -3,6 +3,11 @@ body {
 	padding: 0;
 }
 
+code {
+	display: block;
+	padding: 5px;
+}
+
 /*detail.html*/
 
 .api-detail {
@@ -13,7 +18,7 @@ body {
 	margin: 10px 0;
 }
 
-.left-cont {
+.api-detail .left-cont {
 	position: fixed; 
 	top: 0;
 	bottom: 0;
@@ -24,20 +29,51 @@ body {
 	background-color: #f8f8f8; 
 }
 
-.right-cont {
+.api-detail .right-cont {
 	width: 75%; 
 	margin-left: 25%; 
 	padding: 20px;
 }
 
+.api-detail .group-name {
+	font-size: 16px;
+	font-weight: 700;
+}
+
 /*testApi.html*/
 
 .api-test {
-
 	margin-top: 30px;
-	
 }
 
 .api-test p {
 	margin: 10px 0;
+}
+
+.api-test .left-cont {
+	padding-right: 30px;
+	border-right: 1px solid #ddd;
+}
+
+.api-test .send-group {
+
+}
+
+.api-test .send-group select {
+	display: inline-block;
+	width: 90px;
+}
+
+.api-test .send-group input {
+	display: inline-block;
+	width: 600px;
+}
+
+.api-test .param-item {
+	margin: 5px 0;
+}
+
+.api-test .param-item input {
+	display: inline-block;
+	width: 200px;
 }

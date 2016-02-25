@@ -6,12 +6,17 @@ function GroupAddCtrl($timeout, $stateParams, $state, DataService) {
 
 	var vm = this;
 
-	vm.group = {};
+	////////////////////////// variables bind to view ///////////////////////////
 
-	vm.submit = function() {
+	vm.group = {};	// group数据
+
+	vm.submit = submit;	// 提交
+
+	////////////////////////// functions bind to view ///////////////////////////
+
+	function submit() {
 		vm.group.systemId = $stateParams.systemId;
 		DataService.createGroup(vm.group, function(res){
-			console.log(res);
 			$state.go('Detail', {
 				systemId: $stateParams.systemId
 			})
