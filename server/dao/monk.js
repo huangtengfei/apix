@@ -22,9 +22,37 @@ let mongo = {};
  * @mongo api
  */
 mongo.find = (dbName, collection, condition, res) => {
+
 	let db = monk(host + dbName);
 	let model = db.get(collection);
+
 	model.find(condition, (err, doc) => {
+		if(err) {
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+};
+
+/**
+ * findById
+ *
+ * @param {String} the name of a collection
+ * @param {String} id(ObjectId)
+ * @return {Promise}
+ * @mongo api
+ */
+mongo.findById = (dbName, collection, id, res) => {
+
+	let db = monk(host + dbName);
+	let model = db.get(collection);
+
+	model.findById(id, (err, doc) => {
 		if(err) {
 			console.log(err);
 			return res.sendStatus(500);
@@ -46,8 +74,10 @@ mongo.find = (dbName, collection, condition, res) => {
 * @mongo api
 */
 mongo.insert = (dbName, collection, data, res) => {
+
 	let db = monk(host + dbName);
 	let model = db.get(collection);
+
 	model.insert(data, (err, doc) => {
 		if(err) {
 			console.log(err);
@@ -55,6 +85,50 @@ mongo.insert = (dbName, collection, data, res) => {
 		}
 		return res.json(doc);
 	})
+};
+
+/**
+ * updateById
+ *
+ * @param {String} the name of a collection
+ * @param {String} id(ObjectId)
+ * @return {Promise}
+ * @mongo api
+ */
+mongo.updateById = (dbName, collection, id, data, res) => {
+
+	let db = monk(host + dbName);
+	let model = db.get(collection);
+	
+	model.updateById(id, {$set: data}, (err, doc) => {
+		if(err) {
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		return res.json(doc);
+	});
+};
+
+/**
+ * removeById
+ *
+ * @param {String} the name of a collection
+ * @param {Object} query condition
+ * @return {Promise}
+ * @mongo api
+ */
+mongo.removeById = (dbName, collection, id, res) => {
+
+	let db = monk(host + dbName);
+	let model = db.get(collection);
+	
+	model.remove({_id: id}, (err, doc) => {
+		if(err) {
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		return res.json(doc);
+	});
 };
 
 // /**
@@ -108,26 +182,6 @@ mongo.insert = (dbName, collection, data, res) => {
 // };
 
 // /**
-//  * findById
-//  *
-//  * @param {String} the name of a collection
-//  * @param {String} id(ObjectId)
-//  * @return {Promise}
-//  * @mongo api
-//  */
-// mongo.findById = (collection, id) => {
-// 	let defer = q.defer();
-// 	let model = db.get(collection);
-// 	model.findById(id, (err, doc) => {
-// 		if(err) {
-// 			defer.reject(err);
-// 		}
-// 		defer.resolve(doc);
-// 	})
-// 	return defer.promise;
-// };
-
-// /**
 //  * update
 //  *
 //  * @param {String} the name of a collection
@@ -141,52 +195,6 @@ mongo.insert = (dbName, collection, data, res) => {
 // 	let model = db.get(collection);
 	
 // 	model.update(condition, {$set: data}, (err, doc) => {
-// 		if(err) {
-// 			defer.reject(err);
-// 		}
-// 		defer.resolve(doc);
-// 	});
-
-// 	return defer.promise;
-// };
-
-// /**
-//  * updateById
-//  *
-//  * @param {String} the name of a collection
-//  * @param {String} id(ObjectId)
-//  * @return {Promise}
-//  * @mongo api
-//  */
-// mongo.updateById = (collection, id, data) => {
-
-// 	let defer = q.defer();
-// 	let model = db.get(collection);
-	
-// 	model.updateById(id, {$set: data}, (err, doc) => {
-// 		if(err) {
-// 			defer.reject(err);
-// 		}
-// 		defer.resolve(doc);
-// 	});
-
-// 	return defer.promise;
-// };
-
-// /**
-//  * remove
-//  *
-//  * @param {String} the name of a collection
-//  * @param {Object} query condition
-//  * @return {Promise}
-//  * @mongo api
-//  */
-// mongo.remove = (collection, condition) => {
-
-// 	let defer = q.defer();
-// 	let model = db.get(collection);
-	
-// 	model.remove(condition,(err, doc) => {
 // 		if(err) {
 // 			defer.reject(err);
 // 		}

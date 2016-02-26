@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="424061fe-c151-48ac-8160-4e8c4c48d8f5" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\15040164\Desktop\apix\public\src\admin\services\data.js" afterPath="$PROJECT_DIR$/public/src/admin/services/apix.js" />
-      <change type="MOVED" beforePath="C:\Users\15040164\Desktop\apix\public\src\admin\services\mock.js" afterPath="$PROJECT_DIR$/public/src/admin/services/mockHttp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/addApi.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/addApi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/addGroup.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/addGroup.js" />
+      <change type="DELETED" beforePath="C:\Users\15040164\Desktop\apix\public\src\admin\controllers\mockHttp.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/filters/admin.js" afterPath="$PROJECT_DIR$/public/src/admin/filters/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/app.js" afterPath="$PROJECT_DIR$/public/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/services/common.js" afterPath="$PROJECT_DIR$/public/src/admin/services/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/detail.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/detail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/auth/controllers/login.js" afterPath="$PROJECT_DIR$/public/src/auth/controllers/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/common/controllers/main.js" afterPath="$PROJECT_DIR$/public/src/common/controllers/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/api/mock.js" afterPath="$PROJECT_DIR$/server/api/mock.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/mockApi.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/mockApi.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/services/mockApi.js" afterPath="$PROJECT_DIR$/public/src/admin/services/mockApi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/mockHttp.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/mockHttp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/paramTips.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/paramTips.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/systems.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/systems.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/controllers/testApi.js" afterPath="$PROJECT_DIR$/public/src/admin/controllers/testApi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/auth/services/token.js" afterPath="$PROJECT_DIR$/public/src/auth/services/token.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/auth/services/user.js" afterPath="$PROJECT_DIR$/public/src/auth/services/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/admin/templates/mockHttp.html" afterPath="$PROJECT_DIR$/public/src/admin/templates/mockHttp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/dao/monk.js" afterPath="$PROJECT_DIR$/server/dao/monk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/route/routes.js" afterPath="$PROJECT_DIR$/server/route/routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="apix.iws" />
@@ -45,41 +35,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="addGroup.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/addGroup.js">
+      <file leaf-file-name="mockApi.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/admin/services/mockApi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
-              <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="546">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addApi.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/addApi.js">
+      <file leaf-file-name="mockApi.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/mockApi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="861">
-              <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4" vertical-offset="315" max-vertical-offset="1176">
-              <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/src/common/controllers/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
-              <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.28958052" vertical-offset="1613" max-vertical-offset="2919">
+              <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -102,7 +72,6 @@
         <option value="$PROJECT_DIR$/public/src/admin/templates/mockApi.html" />
         <option value="$PROJECT_DIR$/public/css/main.css" />
         <option value="$PROJECT_DIR$/public/src/admin/services/mockData.js" />
-        <option value="$PROJECT_DIR$/public/src/admin/templates/mockHttp.html" />
         <option value="$PROJECT_DIR$/public/src/app.js" />
         <option value="$PROJECT_DIR$/public/src/auth/services/token.js" />
         <option value="$PROJECT_DIR$/public/src/auth/services/user.js" />
@@ -110,19 +79,20 @@
         <option value="$PROJECT_DIR$/public/src/admin/services/apix.js" />
         <option value="$PROJECT_DIR$/public/src/admin/services/common.js" />
         <option value="$PROJECT_DIR$/public/src/admin/services/data.js" />
-        <option value="$PROJECT_DIR$/public/src/admin/services/mockApi.js" />
         <option value="$PROJECT_DIR$/public/src/admin/services/mockHttp.js" />
-        <option value="$PROJECT_DIR$/public/src/admin/filters/admin.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/testApi.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/systems.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/paramTips.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/mockHttp.js" />
-        <option value="$PROJECT_DIR$/public/src/admin/controllers/mockApi.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/detail.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/addGroup.js" />
         <option value="$PROJECT_DIR$/public/src/admin/controllers/addApi.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/src/common/controllers/main.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/src/admin/templates/mockHttp.html" />
+        <option value="$PROJECT_DIR$/public/src/admin/filters/admin.js" />
+        <option value="$PROJECT_DIR$/public/src/admin/controllers/mockApi.js" />
+        <option value="$PROJECT_DIR$/public/src/admin/services/mockApi.js" />
       </list>
     </option>
   </component>
@@ -539,14 +509,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -654,16 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7241379" vertical-offset="378" max-vertical-offset="1407">
-          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="47" selection-end-column="24" />
-          <folding>
-            <marker date="1456458896541" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40324762" vertical-offset="1109" max-vertical-offset="1848">
@@ -677,33 +637,6 @@
         <state vertical-scroll-proportion="-10.5" vertical-offset="0" max-vertical-offset="756">
           <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/templates/mockApi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.030172413" vertical-offset="0" max-vertical-offset="798">
-          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1456466531858" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/templates/mockHttp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4224138" vertical-offset="0" max-vertical-offset="1533">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,25 +696,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/services/mockApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="441">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/admin/services/mockHttp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/filters/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
           <folding />
         </state>
@@ -798,22 +715,6 @@
     <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/systems.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/mockHttp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2625">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/mockApi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2583">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
           <folding />
         </state>
@@ -843,6 +744,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/common/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42625168" vertical-offset="0" max-vertical-offset="739">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/addApi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="861">
@@ -853,16 +762,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4" vertical-offset="315" max-vertical-offset="1176">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        <state vertical-scroll-proportion="1.1184767" vertical-offset="68" max-vertical-offset="1155">
+          <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/common/controllers/main.js">
+    <entry file="file://$PROJECT_DIR$/public/src/admin/templates/mockApi.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.030172413" vertical-offset="0" max-vertical-offset="798">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1456466531858" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/admin/filters/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.113667116" vertical-offset="0" max-vertical-offset="739">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/admin/templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54741377" vertical-offset="585" max-vertical-offset="1407">
+          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/admin/templates/mockHttp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15086207" vertical-offset="0" max-vertical-offset="1533">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/admin/services/mockApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="546">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/admin/controllers/mockApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28958052" vertical-offset="1613" max-vertical-offset="2919">
+          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
           <folding />
         </state>
       </provider>

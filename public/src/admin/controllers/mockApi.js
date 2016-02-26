@@ -80,6 +80,22 @@ function MockApiCtrl($stateParams, CommonService, ApixService, MockApiService) {
 			}, function(err){
 				console.log(err);
 			})
+		}else if(vm.formData.method == 3){
+			var body = {};
+			vm.formData.body.forEach(function(item){
+				body[item.key] = item.value;
+			})
+			MockApiService.patch(vm.formData.url, body, function(res){
+				vm.formData.output = JSON.stringify(res);
+			}, function(err){
+				console.log(err);
+			})
+		}else if(vm.formData.method == 4){
+			MockApiService.remove(vm.formData.url, function(res){
+				vm.formData.output = JSON.stringify(res);
+			}, function(err){
+				console.log(err);
+			})
 		}
 
 	}

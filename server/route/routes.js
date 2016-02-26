@@ -28,7 +28,9 @@ function routes(app) {
 
 	app.get('/mock-api/:system/:group', mock.getAll);
 	app.post('/mock-api/:system/:group', mock.create);
-
+	app.get('/mock-api/:system/:group/:id', mock.getById);
+	app.patch('/mock-api/:system/:group/:id', mock.updateById);
+	app.delete('/mock-api/:system/:group/:id', mock.removeById);
 
 }
 

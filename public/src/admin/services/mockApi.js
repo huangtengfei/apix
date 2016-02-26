@@ -9,7 +9,12 @@ function MockApiService($http) {
         },
         post: function(url, params, succ, err){
             $http.post(url, params).success(succ).error(err);
+        },
+        patch: function(url, params, succ, err){
+            $http.patch(url, params).success(succ).error(err);
+        },
+        remove: function(url, succ, err){
+            $http.delete(url).success(succ).error(err);
         }
-
     }
 }
