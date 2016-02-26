@@ -9,8 +9,8 @@
 
 const mongoose = require('mongoose');
 
-const util = require('./util');
-const schemas = require('./schemas');
+const util = require('../helper/util');
+const schemas = require('../dao/schemas');
 
 let db = mongoose.createConnection('localhost', 'apix');
 
@@ -98,7 +98,6 @@ mongo.createGroup = (groupData, res) => {
 			console.log(err);
 			return res.sendStatus(500);
 		}
-		console.log(doc);
 		return res.json(doc);
 	})
 }
@@ -111,7 +110,6 @@ mongo.createApi = (apiData, res) => {
 			console.log(err);
 			return res.sendStatus(500);
 		}
-		console.log(doc);
 		return res.json(doc);
 	})
 }
@@ -122,7 +120,6 @@ mongo.getGroup = (params, res) => {
 			console.log(err);
 			return res.sendStatus(500);
 		}
-		console.log(doc);
 		if(doc){
 			return res.json(doc);
 		}else{
@@ -132,13 +129,11 @@ mongo.getGroup = (params, res) => {
 }
 
 mongo.getApi = (apiId, res) => {
-	console.log(apiId);
 	ApiModel.findOne({_id: apiId}, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
 		}
-		console.log(doc);
 		if(doc){
 			return res.json(doc);
 		}else{

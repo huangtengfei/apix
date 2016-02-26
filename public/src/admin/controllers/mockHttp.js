@@ -72,18 +72,6 @@ function MockHttpCtrl(CommonService, MockService) {
         }
     }
 
-    function send() {
-        var params = {};
-        vm.formData.params.forEach(function(item){
-            params[item.key] = item.value;
-        })
-        MockService.getUrl(vm.formData.url, params, function(res){
-            vm.formData.output = JSON.stringify(res);
-        }, function(err){
-            console.log(err);
-        });
-    }
-
     function formatResp() {
         vm.formData.output = CommonService.format(vm.formData.output);
     }

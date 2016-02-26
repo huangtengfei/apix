@@ -6,13 +6,6 @@ function ApiTestCtrl($stateParams, DataService) {
 
 	var vm = this;
 
-	// code-mirror 配置信息
-	vm.cmOption = {
-		theme: 'paraiso-dark',
-		readOnly: true,
-		mode: {name: "javascript", json: true}
-	};
-
 	////////////////////////// variables bind to view ///////////////////////////
 
 	vm.api = {};	// api对象，通过id查得详情

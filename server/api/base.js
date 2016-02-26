@@ -7,43 +7,43 @@
 
 'use strict';
 
-const mongo = require('./mongo');
+const mongo = require('../dao/mongo');
 
-let api = {};
+let base = {};
 
-api.listSystems = (req, res) => {
+base.listSystems = (req, res) => {
 	let tokendata = req._tokendata;
 	mongo.listSystems(tokendata.id, res);
 }
 
-api.listGroups = (req, res) => {
+base.listGroups = (req, res) => {
 	let params = req.query;
 	mongo.listGroups(params.system, res);
 }
 
-api.listApis = (req, res) => {
+base.listApis = (req, res) => {
 	let params = req.query;
 	mongo.listApis(params.group, res);
 }
 
-api.createGroup = (req, res) => {
+base.createGroup = (req, res) => {
 	let params = req.body;
 	mongo.createGroup(params, res);
 }
 
-api.createApi = (req, res) => {
+base.createApi = (req, res) => {
 	let params = req.body;
 	mongo.createApi(params, res);
 }
 
-api.getGroup = (req, res) => {
+base.getGroup = (req, res) => {
 	let params = req.query;
 	mongo.getGroup(params, res);
 }
 
-api.getApi = (req, res) => {
+base.getApi = (req, res) => {
 	let params = req.query;
 	mongo.getApi(params.id, res);
 }
 
-module.exports = api;
+module.exports = base;

@@ -1,8 +1,10 @@
-<div class="col-sm-8 right-cont" ng-controller="MockHttpCtrl as vm">
+<div class="col-sm-8 right-cont">
     <div class="col-sm-12 send-group">
-        <select class="form-control">
+        <select class="form-control" ng-model="vm.formData.method">
             <option value="1">GET</option>
             <option value="2">POST</option>
+            <option value="3">PUT</option>
+            <option value="4">DELETE</option>
         </select>
         <input type="text" class="form-control" placeholder="目标url"
                ng-model="vm.formData.url">

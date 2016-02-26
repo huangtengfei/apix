@@ -10,9 +10,9 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
-const mongo = require('./mongo');
+const mongo = require('../dao/mongo');
 
-const cert = fs.readFileSync('./server/private.key');	// 加密私钥
+const cert = fs.readFileSync('./server/helper/private.key');	// 加密私钥
 
 let auth = {};
 
