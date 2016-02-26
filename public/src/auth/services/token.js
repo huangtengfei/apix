@@ -1,4 +1,4 @@
-angular.module('auth').factory('TokenInterceptor', TokenInterceptor);
+angular.module('apix').factory('TokenInterceptor', TokenInterceptor);
 
 TokenInterceptor.$inject = ['$q', '$window', '$location']
 

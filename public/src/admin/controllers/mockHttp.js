@@ -1,8 +1,8 @@
-angular.module('auth').controller('MockHttpCtrl', MockHttpCtrl);
+angular.module('apix').controller('MockHttpCtrl', MockHttpCtrl);
 
-MockHttpCtrl.$inject = ['CommonService', 'MockService'];
+MockHttpCtrl.$inject = ['$scope', 'CommonService', 'MockHttpService', 'Data'];
 
-function MockHttpCtrl(CommonService, MockService) {
+function MockHttpCtrl($scope, CommonService, MockHttpService, Data) {
 
     var vm = this;
 
@@ -17,24 +17,6 @@ function MockHttpCtrl(CommonService, MockService) {
         mode: {name: "javascript", json: true}
     };
 
-    // request params
-    vm.formData.params = [{
-        key: '',
-        value: ''
-    }];
-
-    // request headers
-    vm.formData.headers = [{
-        key: '',
-        value: ''
-    }];
-
-    // request body
-    vm.formData.body = [{
-        key: '',
-        value: ''
-    }];
-
     // 模拟请求的tab页
     vm.formData.tabs = [{
         name: 'Params'
@@ -43,9 +25,6 @@ function MockHttpCtrl(CommonService, MockService) {
     },{
         name: 'Body'
     }];
-
-    // 初始tab页为params
-    vm.formData.selectedTab = vm.formData.tabs[0];
 
     vm.selectTab = selectTab;	// 选择tab
     vm.add = add;	// 添加一条param
@@ -67,9 +46,35 @@ function MockHttpCtrl(CommonService, MockService) {
     }
 
     function remove(arr, index) {
-        if(arr.length > 1){
-            arr.splice(index, 1);
+        arr.splice(index, 1);
+        if(arr.length == 0){
+            add(arr);
         }
+    }
+
+    function send() {
+        var params = {};
+        vm.formData.params.forEach(function(item){
+            params[item.key] = item.value;
+        })
+        if(vm.formData.method == 1){
+            MockApiService.get(vm.formData.url, params, function(res){
+                vm.formData.output = JSON.stringify(res);
+            }, function(err){
+                console.log(err);
+            });
+        }else if(vm.formData.method == 2){
+            var body = {};
+            vm.formData.body.forEach(function(item){
+                body[item.key] = item.value;
+            })
+            MockApiService.post(vm.formData.url, body, function(res){
+                vm.formData.output = JSON.stringify(res);
+            }, function(err){
+                console.log(err);
+            })
+        }
+
     }
 
     function formatResp() {
@@ -77,5 +82,38 @@ function MockHttpCtrl(CommonService, MockService) {
     }
 
     ////////////////////////////// inner functions /////////////////////////////
+
+    function initParams() {
+        vm.formData.selectedTab = vm.formData.tabs[0];	// 初始tab页为params
+        vm.formData.params = [{key: '', value: ''}];	// request params
+        vm.formData.headers = [{key: '', value: ''}];	// request headers
+        vm.formData.body = [{key: '', value: ''}];	// request body
+        vm.formData.output = '';
+    }
+
+    initParams();
+
+    ////////////////////////////////// events ////////////////////////////////
+
+    vm.activeApi = Data.activeApi;
+    selectApi(vm.activeApi);
+
+    function selectApi(api) {
+        vm.activeApi = api;
+        vm.formData.method = api.method;
+        vm.formData.url = api.url;
+    }
+
+    $scope.$watch('vm.activeApi', function(api){
+        selectApi(api);
+    })
+
+    //$rootScope.$on('ApiChanged', function(event, api){
+    //    vm.activeApi = api;
+    //    vm.formData.method = api.method;
+    //    vm.formData.url = api.url;
+    //    initParams();
+    //})
+
 
 }

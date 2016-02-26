@@ -1,4 +1,4 @@
-angular.module('auth').factory('MockApiService', MockApiService);
+angular.module('apix').factory('MockApiService', MockApiService);
 
 MockApiService.$inject = ['$http', 'baseUrl'];
 

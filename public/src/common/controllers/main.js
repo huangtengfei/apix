@@ -1,4 +1,4 @@
-angular.module('auth').controller('MainCtrl', MainCtrl);
+angular.module('apix').controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$window', '$state'];
 

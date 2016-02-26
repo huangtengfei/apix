@@ -1,8 +1,8 @@
-angular.module('auth').controller('SystemsCtrl', SystemsCtrl);
+angular.module('apix').controller('SystemsCtrl', SystemsCtrl);
 
-SystemsCtrl.$inject = ['$state', 'DataService'];
+SystemsCtrl.$inject = ['$state', 'ApixService'];
 
-function SystemsCtrl($state, DataService) {
+function SystemsCtrl($state, ApixService) {
 
 	var vm = this;
 
@@ -25,7 +25,7 @@ function SystemsCtrl($state, DataService) {
 	// 初始化，查询所有系统
 	function init() {
 
-		DataService.getSystems(function(res){
+		ApixService.getSystems(function(res){
 			vm.sysList = res;
 		}, function(err){
 			console.log(err);

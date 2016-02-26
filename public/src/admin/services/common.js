@@ -1,4 +1,4 @@
-angular.module('auth').factory('CommonService', CommonService);
+angular.module('apix').factory('CommonService', CommonService);
 
 CommonService.$inject = [];
 

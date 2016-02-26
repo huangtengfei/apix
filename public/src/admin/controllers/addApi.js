@@ -1,8 +1,8 @@
-angular.module('auth').controller('ApiAddCtrl', ApiAddCtrl);
+angular.module('apix').controller('ApiAddCtrl', ApiAddCtrl);
 
-ApiAddCtrl.$inject = ['$stateParams', '$state', 'DataService'];
+ApiAddCtrl.$inject = ['$stateParams', '$state', 'ApixService'];
 
-function ApiAddCtrl($stateParams, $state, DataService) {
+function ApiAddCtrl($stateParams, $state, ApixService) {
 
 	var vm = this;
 
@@ -23,7 +23,7 @@ function ApiAddCtrl($stateParams, $state, DataService) {
 
 	function submit() {
 		vm.api.group = $stateParams.groupName;
-		DataService.createApi(vm.api, function(res){
+		ApixService.createApi(vm.api, function(res){
 			$state.go('Detail', {
 				sysName: $stateParams.sysName
 			})

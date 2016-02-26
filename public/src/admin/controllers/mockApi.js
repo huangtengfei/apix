@@ -1,8 +1,8 @@
-angular.module('auth').controller('MockApiCtrl', MockApiCtrl);
+angular.module('apix').controller('MockApiCtrl', MockApiCtrl);
 
-MockApiCtrl.$inject = ['$stateParams', '$state', 'CommonService', 'DataService', 'MockApiService'];
+MockApiCtrl.$inject = ['$stateParams', 'CommonService', 'ApixService', 'MockApiService'];
 
-function MockApiCtrl($stateParams, $state, CommonService, DataService, MockApiService) {
+function MockApiCtrl($stateParams, CommonService, ApixService, MockApiService) {
 
 	var vm = this;
 
@@ -105,7 +105,7 @@ function MockApiCtrl($stateParams, $state, CommonService, DataService, MockApiSe
 			system: $stateParams.sysName,
 			name: $stateParams.groupName
 		}
-		DataService.getGroup(params, function(res){
+		ApixService.getGroup(params, function(res){
 			vm.mockApis = res.mockApis;
 			vm.activeApi = vm.mockApis[0];
 			selectApi(vm.activeApi);

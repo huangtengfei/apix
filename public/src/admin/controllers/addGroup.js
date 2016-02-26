@@ -1,8 +1,8 @@
-angular.module('auth').controller('GroupAddCtrl', GroupAddCtrl);
+angular.module('apix').controller('GroupAddCtrl', GroupAddCtrl);
 
-GroupAddCtrl.$inject = ['$stateParams', '$state', 'DataService'];
+GroupAddCtrl.$inject = ['$stateParams', '$state', 'ApixService'];
 
-function GroupAddCtrl($stateParams, $state, DataService) {
+function GroupAddCtrl($stateParams, $state, ApixService) {
 
 	var vm = this;
 
@@ -42,7 +42,7 @@ function GroupAddCtrl($stateParams, $state, DataService) {
 			url: baseUrl + '/:id'
 		}];
 
-		DataService.createGroup(vm.group, function(res){
+		ApixService.createGroup(vm.group, function(res){
 			$state.go('Detail', {
 				sysName: $stateParams.sysName
 			})

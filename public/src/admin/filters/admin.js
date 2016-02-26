@@ -1,4 +1,4 @@
-angular.module('auth').filter('methodFilter', function () {
+angular.module('apix').filter('methodFilter', function () {
 	var methods = {
 		1: 'GET',
 		2: 'POST',

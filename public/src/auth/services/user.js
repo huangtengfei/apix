@@ -1,4 +1,4 @@
-angular.module('auth').factory('UserService', UserService);
+angular.module('apix').factory('UserService', UserService);
 
 UserService.$inject = ['$http', 'baseUrl'];
 

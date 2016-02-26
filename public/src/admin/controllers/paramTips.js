@@ -1,4 +1,4 @@
-angular.module('auth').controller('ParamTipsCtrl', ParamTipsCtrl);
+angular.module('apix').controller('ParamTipsCtrl', ParamTipsCtrl);
 
 ParamTipsCtrl.$inject = [];
 

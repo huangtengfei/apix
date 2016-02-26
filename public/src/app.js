@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('auth', ['ui.router', 'ui.codemirror']);
+	var app = angular.module('apix', ['ui.router', 'ui.codemirror']);
 
 	app.value('baseUrl', 'localhost:3000/');
 

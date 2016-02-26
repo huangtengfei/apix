@@ -1,8 +1,8 @@
-angular.module('auth').controller('DetailCtrl', DetailCtrl);
+angular.module('apix').controller('DetailCtrl', DetailCtrl);
 
-DetailCtrl.$inject = ['$stateParams', '$state', '$location', '$anchorScroll', 'DataService'];
+DetailCtrl.$inject = ['$stateParams', '$state', '$location', '$anchorScroll', 'ApixService'];
 
-function DetailCtrl($stateParams, $state, $location, $anchorScroll, DataService) {
+function DetailCtrl($stateParams, $state, $location, $anchorScroll, ApixService) {
 
 	var vm = this;
 
@@ -53,13 +53,13 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, DataService)
 			system: $stateParams.sysName
 		};
 
-		DataService.getGroups(params, function(groups){
+		ApixService.getGroups(params, function(groups){
 			vm.groups = groups;
 			vm.groups.forEach(function(group){
 				var params = {
 					group: group.name
 				}
-				DataService.getApis(params, function(apis){
+				ApixService.getApis(params, function(apis){
 					group.apis = apis;
 				}, function(err){
 					console.log(err);

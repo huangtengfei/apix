@@ -1,4 +1,4 @@
-angular.module('auth').controller('LoginCtrl', LoginCtrl);
+angular.module('apix').controller('LoginCtrl', LoginCtrl);
 
 LoginCtrl.$inject = ['$window', '$state', 'UserService'];
 
