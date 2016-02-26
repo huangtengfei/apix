@@ -25,20 +25,26 @@
 
     <div class="right-cont">
         <div ng-repeat="group in vm.groups" id="{{group._id}}">
-            <div class="well group-name">{{group.name}}</div>
+            <div class="well group-name">
+                <span>{{group.name}}</span>
+                <a ui-sref="MockApi({sysName:vm.formData.sysName, groupName: group.name})" target="_blank" class="pull-right">&gt;&gt; Mock Api</a>
+            </div>
             <div class="panel panel-default" ng-repeat="api in group.apis" id="{{api._id}}">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         {{api.name}}
                         <a ui-sref="TestApi({apiId: api._id})" target="_blank">
-                            <span class="label label-danger pull-right">测试</span>
+                            <span class="label label-info pull-right">测试</span>
                         </a>
                     </h3>
                 </div>
                 <div class="panel-body">
                     <p>{{api.desc}}</p>
                     <p>
-                        <span class="label label-success">{{api.method | methodFilter}}</span>
+                        <span class="label"
+                              ng-class="{'label-success': api.method==1,'label-primary': api.method==2,
+                              'label-warning': api.method==3, 'label-danger': api.method==4}">
+                            {{api.method | methodFilter}}</span>
                     </p>
                     <p>
                         <code>

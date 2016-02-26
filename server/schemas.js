@@ -22,13 +22,14 @@ schemas.systemSchema = new Schema({
 })
 
 schemas.groupSchema = new Schema({
-	systemId: String,  
+	system: String,  
     name: String, 
-    desc: String 
+    desc: String,
+    mockApis: Array
 })
 
 schemas.apiSchema = new Schema({
-	groupId: String,  
+	group: String,  
     name: String,   
     desc: String, 
     method: Number,

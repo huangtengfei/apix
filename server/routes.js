@@ -14,14 +14,16 @@ function routes(app) {
 		res.render('index');
 	})
 
-	app.post('/login', auth.login);
+	app.post('/apix/v1/login', auth.login);
 
-	app.get('/api/systems', auth.verifyToken, api.listSystems);
-	app.get('/api/groups', auth.verifyToken, api.listGroups);
-	app.get('/api/apis', auth.verifyToken, api.listApis);
-	app.post('/api/groups', auth.verifyToken, api.createGroup);
-	app.post('/api/apis', auth.verifyToken, api.createApi);
-	app.get('/api/api', auth.verifyToken, api.getApi);
+	app.get('/apix/v1/systems', auth.verifyToken, api.listSystems);
+	app.get('/apix/v1/groups', auth.verifyToken, api.listGroups);
+	app.get('/apix/v1/apis', auth.verifyToken, api.listApis);
+
+	app.post('/apix/v1/groups', auth.verifyToken, api.createGroup);
+	app.post('/apix/v1/apis', auth.verifyToken, api.createApi);
+	app.get('/apix/v1/group', auth.verifyToken, api.getGroup);
+	app.get('/apix/v1/api', auth.verifyToken, api.getApi);
 
 
 }

@@ -1,0 +1,32 @@
+<div class="api-test">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    {{vm.formData.groupName}} - Mock Api
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-4 left-cont">
+                    <div class="panel panel-default" ng-repeat="api in vm.mockApis" ng-click="vm.selectApi(api)">
+                        <div class="panel-heading" style="cursor: pointer;">{{api.name}}</div>
+                        <div class="panel-body" ng-show="api==vm.activeApi">
+                            <p>
+                                <span class="label"
+                                      ng-class="{'label-success': api.method==1,'label-primary': api.method==2,
+                                      'label-warning': api.method==3, 'label-danger': api.method==4}">
+                                    {{api.method | methodFilter}}</span>
+                            </p>
+                            <p>
+                                <code>
+                                    {{api.url}}
+                                </code>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div ng-include="'src/admin/templates/mockHttp.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>

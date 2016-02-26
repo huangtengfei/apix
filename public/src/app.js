@@ -29,7 +29,7 @@
 				access: {requiredLogin: true}
 			})			
 			.state('Detail', {
-				url: '/systems/:systemId',
+				url: '/systems/:sysName',
 				templateUrl: 'src/admin/templates/detail.html',
 				controller: 'DetailCtrl',
 				controllerAs: 'vm',
@@ -37,7 +37,7 @@
 			})	
 			.state('AddGroup', {
 				parent: 'Main',
-				url: '/systems/:systemId/new',
+				url: '/systems/:sysName/new-group',
 				templateUrl: 'src/admin/templates/addGroup.html',
 				controller: 'GroupAddCtrl',
 				controllerAs: 'vm',
@@ -45,7 +45,7 @@
 			})		
 			.state('AddApi', {
 				parent: 'Main',
-				url: '/systems/:systemId/:groupId/new',
+				url: '/systems/:sysName/:groupName/new-api',
 				templateUrl: 'src/admin/templates/addApi.html',
 				controller: 'ApiAddCtrl',
 				controllerAs: 'vm',
@@ -61,9 +61,17 @@
 			})	
 			.state('TestApi', {
 				// parent: 'Main',
-				url: '/systems/test/:apiId',
+				url: '/apis/:apiId',
 				templateUrl: 'src/admin/templates/testApi.html',
 				controller: 'ApiTestCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})
+			.state('MockApi', {
+				// parent: 'Main',
+				url: '/systems/:sysName/:groupName/mock-api',
+				templateUrl: 'src/admin/templates/mockApi.html',
+				controller: 'MockApiCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})

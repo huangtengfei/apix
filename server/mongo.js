@@ -62,8 +62,8 @@ mongo.listSystems = (userId, res) => {
 	})
 }
 
-mongo.listGroups = (systemId, res) => {
-	GroupModel.find({systemId: systemId}, (err, doc) => {
+mongo.listGroups = (system, res) => {
+	GroupModel.find({system: system}, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
@@ -76,9 +76,9 @@ mongo.listGroups = (systemId, res) => {
 	})
 }
 
-mongo.listApis = (groupId, res) => {
-	console.log(groupId);
-	ApiModel.find({groupId: groupId}, (err, doc) => {
+mongo.listApis = (group, res) => {
+	console.log(group);
+	ApiModel.find({group: group}, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
@@ -113,6 +113,21 @@ mongo.createApi = (apiData, res) => {
 		}
 		console.log(doc);
 		return res.json(doc);
+	})
+}
+
+mongo.getGroup = (params, res) => {
+	GroupModel.findOne({system: params.system, name: params.name}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		console.log(doc);
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
 	})
 }
 

@@ -18,12 +18,12 @@ api.listSystems = (req, res) => {
 
 api.listGroups = (req, res) => {
 	let params = req.query;
-	mongo.listGroups(params.id, res);
+	mongo.listGroups(params.system, res);
 }
 
 api.listApis = (req, res) => {
 	let params = req.query;
-	mongo.listApis(params.id, res);
+	mongo.listApis(params.group, res);
 }
 
 api.createGroup = (req, res) => {
@@ -34,6 +34,11 @@ api.createGroup = (req, res) => {
 api.createApi = (req, res) => {
 	let params = req.body;
 	mongo.createApi(params, res);
+}
+
+api.getGroup = (req, res) => {
+	let params = req.query;
+	mongo.getGroup(params, res);
 }
 
 api.getApi = (req, res) => {

@@ -35,7 +35,7 @@ code {
 	padding: 20px;
 }
 
-.api-detail .group-name {
+.api-detail .right-cont .group-name {
 	font-size: 16px;
 	font-weight: 700;
 }
@@ -55,25 +55,29 @@ code {
 	border-right: 1px solid #ddd;
 }
 
-.api-test .send-group {
+.api-test .right-cont {
 
 }
 
-.api-test .send-group select {
+.api-test .right-cont .send-group {
+
+}
+
+.api-test .right-cont .send-group select {
 	display: inline-block;
 	width: 90px;
 }
 
-.api-test .send-group input {
+.api-test .right-cont .send-group input {
 	display: inline-block;
 	width: 600px;
 }
 
-.api-test .param-item {
+.api-test .right-cont .param-item {
 	margin: 5px 0;
 }
 
-.api-test .param-item input {
+.api-test .right-cont .param-item input {
 	display: inline-block;
 	width: 200px;
 }

@@ -31,32 +31,33 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, DataService)
 
 	function addGroup() {
 		$state.go('AddGroup', {
-			systemId: $stateParams.systemId
+			sysName: $stateParams.sysName
 		});
 	}
 
 	function addApi(group) {
 		$state.go('AddApi', {
-			systemId: $stateParams.systemId,
-			groupId: group._id
+			sysName: $stateParams.sysName,
+			groupName: group.name
 		});
 	}
 
 	////////////////////////////// inner functions /////////////////////////////
 
-	// 初始化，根据系统id查询已存在group和api
+	// 初始化，根据系统name查询已存在group和api
 	function init() {
 
+		vm.formData.sysName = $stateParams.sysName;
+
 		var params = {
-			id: $stateParams.systemId,
-			name: 'abc'
+			system: $stateParams.sysName
 		};
 
 		DataService.getGroups(params, function(groups){
 			vm.groups = groups;
 			vm.groups.forEach(function(group){
 				var params = {
-					id: group._id
+					group: group.name
 				}
 				DataService.getApis(params, function(apis){
 					group.apis = apis;

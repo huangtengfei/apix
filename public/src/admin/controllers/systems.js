@@ -16,7 +16,7 @@ function SystemsCtrl($state, DataService) {
 
 	function viewSys(sys) {
 		$state.go('Detail', {
-			systemId: sys._id
+			sysName: sys.name
 		})
 	}
 

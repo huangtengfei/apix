@@ -15,10 +15,34 @@ function GroupAddCtrl($stateParams, $state, DataService) {
 	////////////////////////// functions bind to view ///////////////////////////
 
 	function submit() {
-		vm.group.systemId = $stateParams.systemId;
+
+		vm.group.system = $stateParams.sysName;
+
+		vm.group.mockApis = [{
+			method: 1,
+			name: '列出所有 ' + vm.group.name,
+			url: '/mock-api/' + vm.group.name + 's'
+		},{
+			method: 2,
+			name: '新建一个 ' + vm.group.name,
+			url: '/mock-api/' + vm.group.name + 's'
+		},{
+			method: 1,
+			name: '获取某个指定的 ' + vm.group.name,
+			url: '/mock-api/' + vm.group.name + 's' + '/:id'
+		},{
+			method: 3,
+			name: '更新某个指定的 ' + vm.group.name,
+			url: '/mock-api/' + vm.group.name + 's' + '/:id'
+		},{
+			method: 4,
+			name: '删除某个指定的 ' + vm.group.name,
+			url: '/mock-api/' + vm.group.name + 's' + '/:id'
+		}];
+
 		DataService.createGroup(vm.group, function(res){
 			$state.go('Detail', {
-				systemId: $stateParams.systemId
+				sysName: $stateParams.sysName
 			})
 		}, function(err){
 			console.log(err);

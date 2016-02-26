@@ -22,10 +22,10 @@ function ApiAddCtrl($stateParams, $state, DataService) {
 	////////////////////////// functions bind to view ///////////////////////////
 
 	function submit() {
-		vm.api.groupId = $stateParams.groupId;
+		vm.api.group = $stateParams.groupName;
 		DataService.createApi(vm.api, function(res){
 			$state.go('Detail', {
-				systemId: $stateParams.systemId
+				sysName: $stateParams.sysName
 			})
 		}, function(err){
 			console.log(err);
