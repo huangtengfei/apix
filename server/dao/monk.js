@@ -131,6 +131,34 @@ mongo.removeById = (dbName, collection, id, res) => {
 	});
 };
 
+mongo.deleteGroup = (condition, res) => {
+
+	let db = monk(host + 'apix');
+	let model = db.get('groups');
+	model.remove(condition, (err, doc) => {
+		if(err) {
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			let model = db.get('apis');
+			let subCond = {
+				system: condition.system,
+				group: condition.name
+			}
+			model.remove(subCond, (err, doc) => {
+				if(err) {
+					console.log(err);
+					return res.sendStatus(500);
+				}
+				return res.json(doc);
+			})
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+}
+
 // /**
 //  * findByPage
 //  *

@@ -168,8 +168,6 @@ mongo.updateGroup = (params, groupData, res) => {
 					system: params.system,
 					group: params.name
 				}
-				console.log('need edit api');
-				console.log(apiParams);
 				ApiModel.update(apiParams, {$set: {group: groupData.name}}, { multi: true }, (err, doc) => {
 					if(err){
 						console.log(err);
@@ -178,7 +176,6 @@ mongo.updateGroup = (params, groupData, res) => {
 					return res.json(doc);
 				})
 			}else{
-				console.log('no need edit api');
 				return res.json(doc);
 			}
 		}else{
@@ -224,7 +221,6 @@ mongo.updateApi = (apiId, apiData, res) => {
 }
 
 mongo.deleteApi = (apiId, res) => {
-	console.log(apiId);
 	ApiModel.findByIdAndRemove(apiId, (err, doc) => {
 		if(err){
 			console.log(err);

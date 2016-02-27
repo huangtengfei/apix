@@ -25,6 +25,7 @@ function routes(app) {
 	app.post('/apix/v1/groups', auth.verifyToken, base.createGroup);
 	app.get('/apix/v1/group', auth.verifyToken, base.getGroup);
 	app.patch('/apix/v1/group', auth.verifyToken, base.editGroup);
+	app.delete('/apix/v1/group', auth.verifyToken, base.deleteGroup);
 
 	app.get('/apix/v1/apis', auth.verifyToken, base.listApis);
 	app.post('/apix/v1/apis', auth.verifyToken, base.createApi);

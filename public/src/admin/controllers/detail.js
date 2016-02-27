@@ -21,6 +21,7 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, AlertService
 	vm.addGroup = addGroup;	// 添加一个api分组
 	vm.addApi = addApi;	// 添加一个api
 	vm.deleteApi = deleteApi;	// 删除一个api
+    vm.deleteGroup = deleteGroup;   // 删除一个group
 
 	////////////////////////// functions bind to view ///////////////////////////
 
@@ -54,6 +55,23 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, AlertService
 			})
 		})
 	}
+
+    function deleteGroup(group) {
+        AlertService.confirm({
+            title: '温馨提示',
+            content: '删除Group的同时其下的所有API也将一同删除，确定吗？'
+        }).then(function(){
+            var params = {
+                system: $stateParams.sysName,
+                name: group.name
+            }
+            ApixService.deleteGroup(params, function(res){
+                init();
+            }, function(err){
+                console.log(err);
+            })
+        })
+    }
 
 	////////////////////////////// inner functions /////////////////////////////
 
