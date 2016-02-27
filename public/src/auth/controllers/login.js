@@ -13,6 +13,7 @@ function LoginCtrl ($window, $state, UserService) {
 			UserService.login(vm.formData, function(res){			
 				if(res.pass){
 					$window.sessionStorage.token = res.token;
+					$window.sessionStorage.userId = res.data._id;
 					$state.go('Systems');
 				}else{
 					vm.message = res.data;

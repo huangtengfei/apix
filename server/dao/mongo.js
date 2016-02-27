@@ -91,6 +91,17 @@ mongo.listApis = (group, res) => {
 	})
 }
 
+mongo.createSystem = (systemData, res) => {
+	let system = new SystemModel(systemData);
+	system.save((err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		return res.json(doc);
+	})
+}
+
 mongo.createGroup = (groupData, res) => {
 	let group = new GroupModel(groupData);
 	group.save((err, doc) => {

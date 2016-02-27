@@ -19,6 +19,9 @@ function ApixService($http) {
         createGroup: function(params, succ, err){
             $http.post('/apix/v1/groups', params).success(succ).error(err);
         },
+        createSystem: function(params, succ, err){
+            $http.post('/apix/v1/systems', params).success(succ).error(err);
+        },
         getGroup: function(params, succ, err){
             $http.get('/apix/v1/group', {params: params}).success(succ).error(err);
         },

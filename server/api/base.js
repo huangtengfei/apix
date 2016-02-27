@@ -26,6 +26,11 @@ base.listApis = (req, res) => {
 	mongo.listApis(params.group, res);
 }
 
+base.createSystem = (req, res) => {
+	let params = req.body;
+	mongo.createSystem(params, res);
+}
+
 base.createGroup = (req, res) => {
 	let params = req.body;
 	mongo.createGroup(params, res);

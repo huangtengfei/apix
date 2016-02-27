@@ -34,7 +34,15 @@
 				controller: 'DetailCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})	
+			})
+			.state('AddSystem', {
+				parent: 'Main',
+				url: '/new-system',
+				templateUrl: 'src/admin/templates/addSystem.html',
+				controller: 'SystemAddCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})
 			.state('AddGroup', {
 				parent: 'Main',
 				url: '/systems/:sysName/new-group',

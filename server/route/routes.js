@@ -21,6 +21,7 @@ function routes(app) {
 	app.get('/apix/v1/groups', auth.verifyToken, base.listGroups);
 	app.get('/apix/v1/apis', auth.verifyToken, base.listApis);
 
+	app.post('/apix/v1/systems', auth.verifyToken, base.createSystem);
 	app.post('/apix/v1/groups', auth.verifyToken, base.createGroup);
 	app.post('/apix/v1/apis', auth.verifyToken, base.createApi);
 	app.get('/apix/v1/group', auth.verifyToken, base.getGroup);

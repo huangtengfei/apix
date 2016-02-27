@@ -52,9 +52,13 @@
                         </code>
                     </p>
                     <p>输入参数</p>
-                    <textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.request"></textarea>
+                    <textarea ng-if="api.request" ui-codemirror="vm.cmOption" class="form-control"
+                              ng-model="api.request"></textarea>
+                    <textarea ng-if="!api.request" ui-codemirror="vm.cmOption" class="form-control">无</textarea>
                     <p>输出参数</p>
-                    <textarea ui-codemirror="vm.cmOption" class="form-control" ng-model="api.response"></textarea>
+                    <textarea ng-if="api.response" ui-codemirror="vm.cmOption" class="form-control"
+                              ng-model="api.response"></textarea>
+                    <textarea ng-if="!api.response" ui-codemirror="vm.cmOption" class="form-control">无</textarea>
                 </div>
             </div>
         </div>
