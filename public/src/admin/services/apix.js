@@ -25,6 +25,9 @@ function ApixService($http) {
         getGroup: function(params, succ, err){
             $http.get('/apix/v1/group', {params: params}).success(succ).error(err);
         },
+        editGroup: function(params, data, succ, err){
+            $http.patch('/apix/v1/group',data, {params: params}).success(succ).error(err);
+        },
         getApi: function(apiId, succ, err){
             $http.get('/apix/v1/apis/' + apiId).success(succ).error(err);
         },

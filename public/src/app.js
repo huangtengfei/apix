@@ -56,7 +56,15 @@
 				controller: 'GroupAddCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})		
+			})
+			.state('EditGroup', {
+				parent: 'Main',
+				url: '/systems/:sysName/:groupName/edit-group',
+				templateUrl: 'src/admin/templates/editGroup.html',
+				controller: 'GroupEditCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})
 			.state('AddApi', {
 				parent: 'Main',
 				url: '/systems/:sysName/:groupName/new-api',

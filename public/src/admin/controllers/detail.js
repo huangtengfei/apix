@@ -70,6 +70,7 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, AlertService
 			vm.groups = groups;
 			vm.groups.forEach(function(group){
 				var params = {
+					system: $stateParams.sysName,
 					group: group.name
 				}
 				ApixService.getApis(params, function(apis){

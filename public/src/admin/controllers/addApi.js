@@ -23,6 +23,7 @@ function ApiAddCtrl($stateParams, $state, ApixService) {
 
 	function submit() {
 		vm.api.group = $stateParams.groupName;
+		vm.api.system = $stateParams.sysName;
 		ApixService.createApi(vm.api, function(res){
 			$state.go('Detail', {
 				sysName: $stateParams.sysName

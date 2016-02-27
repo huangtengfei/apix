@@ -19,14 +19,15 @@ function routes(app) {
 	app.post('/apix/v1/signUp', auth.signUp);
 
 	app.get('/apix/v1/systems', auth.verifyToken, base.listSystems);
-	app.get('/apix/v1/groups', auth.verifyToken, base.listGroups);
-	app.get('/apix/v1/apis', auth.verifyToken, base.listApis);
-
 	app.post('/apix/v1/systems', auth.verifyToken, base.createSystem);
-	app.post('/apix/v1/groups', auth.verifyToken, base.createGroup);
-	app.post('/apix/v1/apis', auth.verifyToken, base.createApi);
 
+	app.get('/apix/v1/groups', auth.verifyToken, base.listGroups);
+	app.post('/apix/v1/groups', auth.verifyToken, base.createGroup);
 	app.get('/apix/v1/group', auth.verifyToken, base.getGroup);
+	app.patch('/apix/v1/group', auth.verifyToken, base.editGroup);
+
+	app.get('/apix/v1/apis', auth.verifyToken, base.listApis);
+	app.post('/apix/v1/apis', auth.verifyToken, base.createApi);
 	app.get('/apix/v1/apis/:id', auth.verifyToken, base.getApi);
 	app.patch('/apix/v1/apis/:id', auth.verifyToken, base.editApi);
 	app.delete('/apix/v1/apis/:id', auth.verifyToken, base.deleteApi);

@@ -27,6 +27,11 @@
         <div ng-repeat="group in vm.groups" id="{{group._id}}">
             <div class="well group-name">
                 <span>{{group.name}}</span>
+                <a ui-sref="EditGroup({sysName:vm.formData.sysName, groupName: group.name})">
+                    <span class="glyphicon glyphicon-edit text-warning" style="top: 2px; cursor:pointer;" aria-hidden="true"></span>
+                </a>
+                        <span class="glyphicon glyphicon-remove text-danger" style="top: 2px; cursor:pointer;"
+                              aria-hidden="true" ng-click="vm.deleteGroup(api)"></span>
                 <a ui-sref="MockApi({sysName:vm.formData.sysName, groupName: group.name})" target="_blank" class="pull-right">&gt;&gt; Mock Api</a>
             </div>
             <div class="panel panel-default" ng-repeat="api in group.apis" id="{{api._id}}">

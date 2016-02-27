@@ -106,9 +106,8 @@ mongo.listGroups = (system, res) => {
 	})
 }
 
-mongo.listApis = (group, res) => {
-	console.log(group);
-	ApiModel.find({group: group}, (err, doc) => {
+mongo.listApis = (params, res) => {
+	ApiModel.find(params, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
@@ -132,6 +131,20 @@ mongo.createSystem = (systemData, res) => {
 	})
 }
 
+mongo.getGroup = (params, res) => {
+	GroupModel.findOne({system: params.system, name: params.name}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+}
+
 mongo.createGroup = (groupData, res) => {
 	let group = new GroupModel(groupData);
 	group.save((err, doc) => {
@@ -143,6 +156,51 @@ mongo.createGroup = (groupData, res) => {
 	})
 }
 
+mongo.updateGroup = (params, groupData, res) => {
+	GroupModel.update(params, {$set: groupData}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			if(groupData.name){
+				let apiParams = {
+					system: params.system,
+					group: params.name
+				}
+				console.log('need edit api');
+				console.log(apiParams);
+				ApiModel.update(apiParams, {$set: {group: groupData.name}}, (err, doc) => {
+					if(err){
+						console.log(err);
+						return res.sendStatus(500);
+					}
+					return res.json(doc);
+				})
+			}else{
+				console.log('no need edit api');
+				return res.json(doc);
+			}
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+}
+
+
+mongo.getApi = (apiId, res) => {
+	ApiModel.findOne({_id: apiId}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+}
 
 mongo.createApi = (apiData, res) => {
 	let api = new ApiModel(apiData);
@@ -174,34 +232,6 @@ mongo.deleteApi = (apiId, res) => {
 		}
 		console.log('delete', doc)
 		return res.json(doc);
-	})
-}
-
-mongo.getGroup = (params, res) => {
-	GroupModel.findOne({system: params.system, name: params.name}, (err, doc) => {
-		if(err){
-			console.log(err);
-			return res.sendStatus(500);
-		}
-		if(doc){
-			return res.json(doc);
-		}else{
-			return res.sendStatus(404);
-		}
-	})
-}
-
-mongo.getApi = (apiId, res) => {
-	ApiModel.findOne({_id: apiId}, (err, doc) => {
-		if(err){
-			console.log(err);
-			return res.sendStatus(500);
-		}
-		if(doc){
-			return res.json(doc);
-		}else{
-			return res.sendStatus(404);
-		}
 	})
 }
 

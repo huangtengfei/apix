@@ -23,7 +23,7 @@ base.listGroups = (req, res) => {
 
 base.listApis = (req, res) => {
 	let params = req.query;
-	mongo.listApis(params.group, res);
+	mongo.listApis(params, res);
 }
 
 base.createSystem = (req, res) => {
@@ -36,19 +36,25 @@ base.createGroup = (req, res) => {
 	mongo.createGroup(params, res);
 }
 
-base.createApi = (req, res) => {
-	let params = req.body;
-	mongo.createApi(params, res);
-}
-
 base.getGroup = (req, res) => {
 	let params = req.query;
 	mongo.getGroup(params, res);
 }
 
+base.editGroup = (req, res) => {
+	let params = req.query;
+	let groupData = req.body;
+	mongo.updateGroup(params, groupData, res);
+}
+
 base.getApi = (req, res) => {
 	let apiId = req.params.id;
 	mongo.getApi(apiId, res);
+}
+
+base.createApi = (req, res) => {
+	let params = req.body;
+	mongo.createApi(params, res);
 }
 
 base.editApi = (req, res) => {

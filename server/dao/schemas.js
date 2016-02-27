@@ -29,6 +29,7 @@ schemas.groupSchema = new Schema({
 })
 
 schemas.apiSchema = new Schema({
+    system: String,
 	group: String,  
     name: String,   
     desc: String, 
