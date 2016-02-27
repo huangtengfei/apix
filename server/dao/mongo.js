@@ -170,7 +170,7 @@ mongo.updateGroup = (params, groupData, res) => {
 				}
 				console.log('need edit api');
 				console.log(apiParams);
-				ApiModel.update(apiParams, {$set: {group: groupData.name}}, (err, doc) => {
+				ApiModel.update(apiParams, {$set: {group: groupData.name}}, { multi: true }, (err, doc) => {
 					if(err){
 						console.log(err);
 						return res.sendStatus(500);
