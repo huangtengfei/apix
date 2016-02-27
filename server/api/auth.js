@@ -29,6 +29,20 @@ auth.login = (req, res) => {
 	mongo.login(username, password, res);
 };
 
+// 注册
+auth.signUp = (req, res) => {
+
+	let username = req.body.username,
+		password = req.body.password,
+		rPassword = req.body.rPassword;
+
+	if(!username || !password || !rPassword || password != rPassword){
+		return res.sendStatus(500);
+	}
+
+	mongo.signUp(username, password, res);
+};
+
 // 对需要token的api调用进行token验证
 auth.verifyToken = (req, res, next) => {
 	let token = req.headers['authorization'] || '';

@@ -12,6 +12,12 @@
 				controller: 'LoginCtrl',
 				controllerAs: 'vm'
 			})
+			.state('SignUp', {
+				url: '/sign-up',
+				templateUrl: 'src/auth/templates/signUp.html',
+				controller: 'SignUpCtrl',
+				controllerAs: 'vm'
+			})
 			// 主页面，里面有导航条，登录之后的页面都包含在这个页面中
 			.state('Main', {
 				abstract: true,

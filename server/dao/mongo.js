@@ -48,6 +48,36 @@ mongo.login = (username, password, res) => {
 	})
 };
 
+mongo.signUp = (username, password, res) => {
+	UserModel.findOne({username: username}, (err, user) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(user){
+			return res.json({
+				pass: false,
+				data: 'Username Already Exists'
+			})
+		}else{
+			let user = new UserModel({
+				username: username,
+				password: password
+			});
+			user.save((err, doc) => {
+				if(err){
+					console.log(err);
+					return res.sendStatus(500);
+				}
+				return res.json({
+					pass: true,
+					data: doc
+				});
+			})
+		}
+	})
+}
+
 mongo.listSystems = (userId, res) => {
 	SystemModel.find({userId: userId}, (err, doc) => {
 		if(err){

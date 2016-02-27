@@ -16,6 +16,7 @@ function routes(app) {
 	})
 
 	app.post('/apix/v1/login', auth.login);
+	app.post('/apix/v1/signUp', auth.signUp);
 
 	app.get('/apix/v1/systems', auth.verifyToken, base.listSystems);
 	app.get('/apix/v1/groups', auth.verifyToken, base.listGroups);
