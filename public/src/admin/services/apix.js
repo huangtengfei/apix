@@ -3,7 +3,7 @@ angular.module('apix').factory('ApixService', ApixService);
 ApixService.$inject = ['$http', 'baseUrl'];
 
 function ApixService($http) {
-    
+
     return {
 
         getSystems: function(succ, err){

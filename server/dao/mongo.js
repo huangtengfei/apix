@@ -1,7 +1,7 @@
 /*
 * dao层
 * 
-* 操作数据库
+* 操作数据库，用 mongoose 操作需要依赖 schema，复杂但可靠，用于系统 api
 * 
 * */
 
@@ -76,9 +76,9 @@ mongo.signUp = (username, password, res) => {
 			})
 		}
 	})
-}
+};
 
-mongo.listSystems = (userId, res) => {
+mongo.getSystems = (userId, res) => {
 	SystemModel.find({userId: userId}, (err, doc) => {
 		if(err){
 			console.log(err);
@@ -90,9 +90,20 @@ mongo.listSystems = (userId, res) => {
 			return res.sendStatus(404);
 		}
 	})
-}
+};
 
-mongo.listGroups = (system, res) => {
+mongo.createSystem = (systemData, res) => {
+	let system = new SystemModel(systemData);
+	system.save((err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		return res.json(doc);
+	})
+};
+
+mongo.getGroups = (system, res) => {
 	GroupModel.find({system: system}, (err, doc) => {
 		if(err){
 			console.log(err);
@@ -104,32 +115,18 @@ mongo.listGroups = (system, res) => {
 			return res.sendStatus(404);
 		}
 	})
-}
+};
 
-mongo.listApis = (params, res) => {
-	ApiModel.find(params, (err, doc) => {
-		if(err){
-			console.log(err);
-			return res.sendStatus(500);
-		}
-		if(doc){
-			return res.json(doc);
-		}else{
-			return res.sendStatus(404);
-		}
-	})
-}
-
-mongo.createSystem = (systemData, res) => {
-	let system = new SystemModel(systemData);
-	system.save((err, doc) => {
+mongo.createGroup = (groupData, res) => {
+	let group = new GroupModel(groupData);
+	group.save((err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
 		}
 		return res.json(doc);
 	})
-}
+};
 
 mongo.getGroup = (params, res) => {
 	GroupModel.findOne({system: params.system, name: params.name}, (err, doc) => {
@@ -143,18 +140,7 @@ mongo.getGroup = (params, res) => {
 			return res.sendStatus(404);
 		}
 	})
-}
-
-mongo.createGroup = (groupData, res) => {
-	let group = new GroupModel(groupData);
-	group.save((err, doc) => {
-		if(err){
-			console.log(err);
-			return res.sendStatus(500);
-		}
-		return res.json(doc);
-	})
-}
+};
 
 mongo.updateGroup = (params, groupData, res) => {
 	GroupModel.update(params, {$set: groupData}, (err, doc) => {
@@ -182,8 +168,32 @@ mongo.updateGroup = (params, groupData, res) => {
 			return res.sendStatus(404);
 		}
 	})
-}
+};
 
+mongo.getApis = (params, res) => {
+	ApiModel.find(params, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		if(doc){
+			return res.json(doc);
+		}else{
+			return res.sendStatus(404);
+		}
+	})
+};
+
+mongo.createApi = (apiData, res) => {
+	let api = new ApiModel(apiData);
+	api.save((err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		return res.json(doc);
+	})
+};
 
 mongo.getApi = (apiId, res) => {
 	ApiModel.findOne({_id: apiId}, (err, doc) => {
@@ -197,18 +207,7 @@ mongo.getApi = (apiId, res) => {
 			return res.sendStatus(404);
 		}
 	})
-}
-
-mongo.createApi = (apiData, res) => {
-	let api = new ApiModel(apiData);
-	api.save((err, doc) => {
-		if(err){
-			console.log(err);
-			return res.sendStatus(500);
-		}
-		return res.json(doc);
-	})
-}
+};
 
 mongo.updateApi = (apiId, apiData, res) => {
 	ApiModel.findByIdAndUpdate(apiId, {$set: apiData}, (err, doc) => {

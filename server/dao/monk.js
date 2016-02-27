@@ -1,24 +1,26 @@
 /*
- * 数据库api，不要改动
- * 
-*/
+* dao层
+* 
+* 操作数据库，用 monk 操作简单，但没有 schema 限制，所以仅用于 mock api
+* 
+* */
 
 'use strict';
 
 const q = require('q');
 const monk = require('monk');
 const host = 'localhost/';
-const db = require('monk')('localhost/sncp');
 
 let mongo = {};
 
 /**
  * find
  *
+ * @param {String} the name of a database
  * @param {String} the name of a collection
  * @param {Object} query condition
  * @param {Object} query params (skip, limit)
- * @return {Promise}
+ * @return {response}
  * @mongo api
  */
 mongo.find = (dbName, collection, condition, res) => {
@@ -42,9 +44,10 @@ mongo.find = (dbName, collection, condition, res) => {
 /**
  * findById
  *
+ * @param {String} the name of a database
  * @param {String} the name of a collection
  * @param {String} id(ObjectId)
- * @return {Promise}
+ * @return {response}
  * @mongo api
  */
 mongo.findById = (dbName, collection, id, res) => {
@@ -68,9 +71,10 @@ mongo.findById = (dbName, collection, id, res) => {
 /**
 * insert
 *
+* @param {String} the name of a database
 * @param {String} the name of a collection
 * @param {Object} the data to be inserted
-* @return {Promise}
+* @return {response}
 * @mongo api
 */
 mongo.insert = (dbName, collection, data, res) => {
@@ -90,9 +94,10 @@ mongo.insert = (dbName, collection, data, res) => {
 /**
  * updateById
  *
+ * @param {String} the name of a database
  * @param {String} the name of a collection
  * @param {String} id(ObjectId)
- * @return {Promise}
+ * @return {response}
  * @mongo api
  */
 mongo.updateById = (dbName, collection, id, data, res) => {
@@ -112,6 +117,7 @@ mongo.updateById = (dbName, collection, id, data, res) => {
 /**
  * removeById
  *
+ * @param {String} the name of a database
  * @param {String} the name of a collection
  * @param {Object} query condition
  * @return {Promise}
@@ -131,6 +137,7 @@ mongo.removeById = (dbName, collection, id, res) => {
 	});
 };
 
+// 因为 mongoose 对 multi delete 的操作不方便，所以此处用了 monk
 mongo.deleteGroup = (condition, res) => {
 
 	let db = monk(host + 'apix');
@@ -158,78 +165,5 @@ mongo.deleteGroup = (condition, res) => {
 		}
 	})
 }
-
-// /**
-//  * findByPage
-//  *
-//  * @param {String} the name of a collection
-//  * @param {Object} query condition
-//  * @param {Object} query params (skip, limit)
-//  * @return {Promise}
-//  * @mongo api
-//  */
-// mongo.findByPage = (collection, condition, params) => {
-// 	let defer = q.defer();
-// 	let model = db.get(collection);
-// 	model.count(condition, (error, count) => {
-// 		if(error) {
-// 			defer.reject(error);
-// 		}
-// 		model.find(condition, params, (err, doc) => {
-// 			if(err) {
-// 				defer.reject(err);
-// 			}
-// 			let result = {			
-// 				count: count,
-// 				data: doc
-// 			}
-// 			defer.resolve(result);
-// 		})
-// 	})
-// 	return defer.promise;
-// }
-
-// /**
-//  * findOne
-//  *
-//  * @param {String} the name of a collection
-//  * @param {Object} query condition
-//  * @return {Promise}
-//  * @mongo api
-//  */
-// mongo.findOne = (collection, condition) => {
-// 	let defer = q.defer();
-// 	let model = db.get(collection);
-// 	model.findOne(condition, (err, doc) => {
-// 		if(err) {
-// 			defer.reject(err);
-// 		}
-// 		defer.resolve(doc);
-// 	})
-// 	return defer.promise;
-// };
-
-// /**
-//  * update
-//  *
-//  * @param {String} the name of a collection
-//  * @param {String} query condition
-//  * @return {Promise}
-//  * @mongo api
-//  */
-// mongo.update = (collection, condition, data) => {
-
-// 	let defer = q.defer();
-// 	let model = db.get(collection);
-	
-// 	model.update(condition, {$set: data}, (err, doc) => {
-// 		if(err) {
-// 			defer.reject(err);
-// 		}
-// 		defer.resolve(doc);
-// 	});
-
-// 	return defer.promise;
-// };
 
 module.exports = mongo;

@@ -12,9 +12,9 @@ const monk = require('../dao/monk');
 
 let base = {};
 
-base.listSystems = (req, res) => {
+base.getSystems = (req, res) => {
 	let tokendata = req._tokendata;
-	mongo.listSystems(tokendata.id, res);
+	mongo.getSystems(tokendata.id, res);
 };
 
 base.createSystem = (req, res) => {
@@ -23,9 +23,9 @@ base.createSystem = (req, res) => {
 };
 
 
-base.listGroups = (req, res) => {
+base.getGroups = (req, res) => {
 	let params = req.query;
-	mongo.listGroups(params.system, res);
+	mongo.getGroups(params.system, res);
 };
 
 base.createGroup = (req, res) => {
@@ -38,7 +38,7 @@ base.getGroup = (req, res) => {
 	mongo.getGroup(params, res);
 };
 
-base.editGroup = (req, res) => {
+base.updateGroup = (req, res) => {
 	let params = req.query;
 	let groupData = req.body;
 	mongo.updateGroup(params, groupData, res);
@@ -50,9 +50,9 @@ base.deleteGroup = (req, res) => {
 	monk.deleteGroup(params, res);
 };
 
-base.listApis = (req, res) => {
+base.getApis = (req, res) => {
 	let params = req.query;
-	mongo.listApis(params, res);
+	mongo.getApis(params, res);
 };
 
 base.createApi = (req, res) => {
@@ -65,7 +65,7 @@ base.getApi = (req, res) => {
 	mongo.getApi(apiId, res);
 };
 
-base.editApi = (req, res) => {
+base.updateApi = (req, res) => {
 	let apiId = req.params.id;
 	let apiData = req.body;
 	mongo.updateApi(apiId, apiData, res);
