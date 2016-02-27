@@ -1,19 +1,23 @@
-<form class="form-horizontal">
+<form class="form-horizontal" name="form1">
     <div class="form-group">
         <label class="col-sm-2 control-label">名称</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" placeholder="分组名称" ng-model="vm.group.name">
+            <input type="text" name="groupName" class="form-control"
+                   placeholder="分组名称，只能为英文字符，最长30个字符"
+                   ng-model="vm.group.name" ng-pattern="/^[a-zA-Z]+$/" maxlength="30" required>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">描述</label>
         <div class="col-sm-10">
-            <textarea name="" class="form-control" placeholder="分组描述" ng-model="vm.group.desc"></textarea>
+            <textarea name="groupDesc" class="form-control" placeholder="分组描述，最长200个字符"
+                      ng-model="vm.group.desc" maxlength="200"></textarea>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" ng-click="vm.submit()">Submit</button>
+            <button type="submit" class="btn btn-primary" ng-click="vm.submit()"
+                    ng-disabled="form1.$invalid">提交</button>
         </div>
     </div>
 </form>  

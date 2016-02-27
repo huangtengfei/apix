@@ -30,6 +30,7 @@ function MockApiCtrl($stateParams, UtilService, ApixService, MockApiService) {
 	vm.add = add;	// 添加一条param
 	vm.remove = remove;	// 删除一条param
 	vm.send = send;	// 发送请求
+    vm.clear = clear;   // 清除url
 	vm.formatResp = formatResp;	// 格式化response data
 
 	////////////////////////// functions bind to view ///////////////////////////
@@ -58,6 +59,10 @@ function MockApiCtrl($stateParams, UtilService, ApixService, MockApiService) {
 			add(arr);
 		}
 	}
+    
+    function clear() {
+        vm.formData.url = '';
+    }
 
 	function send() {
 		var params = {};

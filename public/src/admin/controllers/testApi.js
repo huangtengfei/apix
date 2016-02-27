@@ -31,6 +31,7 @@ function ApiTestCtrl($stateParams, UtilService, ApixService, MockHttpService) {
 	vm.add = add;	// 添加一条param
 	vm.remove = remove;	// 删除一条param
 	vm.send = send;	// 发送请求
+    vm.clear = clear;   // 清除url
 	vm.formatResp = formatResp;	// 格式化response data
 
 	////////////////////////// functions bind to view ///////////////////////////
@@ -52,6 +53,10 @@ function ApiTestCtrl($stateParams, UtilService, ApixService, MockHttpService) {
 			add(arr);
 		}
 	}
+
+    function clear() {
+        vm.formData.url = '';
+    }
 
 	function send() {
 		var params = {};

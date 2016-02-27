@@ -1,19 +1,22 @@
 <div class="col-sm-7 right-cont">
     <div class="col-sm-12 send-group">
-        <select class="form-control" ng-model="vm.formData.method">
-            <option value="1">GET</option>
-            <option value="2">POST</option>
-            <option value="3">PATCH</option>
-            <option value="4">DELETE</option>
-        </select>
-        <input type="text" class="form-control" placeholder="目标url"
-               ng-model="vm.formData.url">
-        <button class="btn btn-primary" type="button" ng-click="vm.send()">
-            Send
-        </button>
-        <button class="btn btn-default" type="button" ng-click="vm.clear()">
-            Clear
-        </button>
+        <form name="form1">
+            <select class="form-control" ng-model="vm.formData.method">
+                <option value="1">GET</option>
+                <option value="2">POST</option>
+                <option value="3">PATCH</option>
+                <option value="4">DELETE</option>
+            </select>
+            <input type="text" name="url" class="form-control" placeholder="目标url"
+                   ng-model="vm.formData.url" required>
+            <button class="btn btn-primary" type="button" ng-click="vm.send()"
+                    ng-disabled="form1.$invalid">
+                发送
+            </button>
+            <button class="btn btn-default" type="button" ng-click="vm.clear()">
+                清除
+            </button>
+        </form>
     </div>
 
     <div class="col-sm-12">
@@ -62,7 +65,7 @@
                         <textarea ui-codemirror="vm.cmOption" class="form-control"
                                   ng-model="vm.formData.output"></textarea>
         <p>
-            <button class="btn btn-default" type="button" ng-click="vm.formatResp()">Format</button>
+            <button class="btn btn-default" type="button" ng-click="vm.formatResp()">格式化</button>
         </p>
     </div>
 </div>
