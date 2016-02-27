@@ -1,8 +1,8 @@
 angular.module('apix').controller('ApiTestCtrl', ApiTestCtrl);
 
-ApiTestCtrl.$inject = ['$stateParams', 'CommonService', 'ApixService', 'MockHttpService'];
+ApiTestCtrl.$inject = ['$stateParams', 'UtilService', 'ApixService', 'MockHttpService'];
 
-function ApiTestCtrl($stateParams, CommonService, ApixService, MockHttpService) {
+function ApiTestCtrl($stateParams, UtilService, ApixService, MockHttpService) {
 
 	var vm = this;
 
@@ -79,7 +79,7 @@ function ApiTestCtrl($stateParams, CommonService, ApixService, MockHttpService) 
 	}
 
 	function formatResp() {
-		vm.formData.output = CommonService.format(vm.formData.output);
+		vm.formData.output = UtilService.format(vm.formData.output);
 	}
 
 	////////////////////////////// inner functions /////////////////////////////
@@ -96,10 +96,7 @@ function ApiTestCtrl($stateParams, CommonService, ApixService, MockHttpService) 
 	// 初始化，根据apiId查询api详情
 	function init(){
 		initParams();
-		var params = {
-			id: $stateParams.apiId
-		}
-		ApixService.getApi(params, function(res){
+		ApixService.getApi($stateParams.apiId, function(res){
 			vm.api = res;
 		}, function(err){
 			console.log(err);

@@ -1,3 +1,9 @@
+angular.module('apix').filter('trustHtml', ['$sce', function($sce) {
+	return function(html) {
+		return $sce.trustAsHtml(html);
+	};
+}])
+
 angular.module('apix').filter('methodFilter', function () {
 	var methods = {
 		1: 'GET',

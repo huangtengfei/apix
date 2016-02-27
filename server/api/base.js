@@ -47,8 +47,20 @@ base.getGroup = (req, res) => {
 }
 
 base.getApi = (req, res) => {
-	let params = req.query;
-	mongo.getApi(params.id, res);
+	let apiId = req.params.id;
+	mongo.getApi(apiId, res);
+}
+
+base.editApi = (req, res) => {
+	let apiId = req.params.id;
+	let apiData = req.body;
+	mongo.updateApi(apiId, apiData, res);
+}
+
+base.deleteApi = (req, res) => {
+	console.log(req);
+	let apiId = req.params.id;
+	mongo.deleteApi(apiId, res);
 }
 
 module.exports = base;

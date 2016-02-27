@@ -64,7 +64,15 @@
 				controller: 'ApiAddCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})	
+			})
+			.state('EditApi', {
+				parent: 'Main',
+				url: '/systems/:sysName/:groupName/:apiId/edit-api',
+				templateUrl: 'src/admin/templates/editApi.html',
+				controller: 'ApiEditCtrl',
+				controllerAs: 'vm',
+				access: {requiredLogin: true}
+			})
 			.state('ParamTips', {
 				parent: 'Main',
 				url: '/param-tips',

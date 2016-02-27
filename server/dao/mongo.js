@@ -155,6 +155,28 @@ mongo.createApi = (apiData, res) => {
 	})
 }
 
+mongo.updateApi = (apiId, apiData, res) => {
+	ApiModel.findByIdAndUpdate(apiId, {$set: apiData}, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		return res.json(doc);
+	})
+}
+
+mongo.deleteApi = (apiId, res) => {
+	console.log(apiId);
+	ApiModel.findByIdAndRemove(apiId, (err, doc) => {
+		if(err){
+			console.log(err);
+			return res.sendStatus(500);
+		}
+		console.log('delete', doc)
+		return res.json(doc);
+	})
+}
+
 mongo.getGroup = (params, res) => {
 	GroupModel.findOne({system: params.system, name: params.name}, (err, doc) => {
 		if(err){

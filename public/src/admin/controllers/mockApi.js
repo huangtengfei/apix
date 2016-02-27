@@ -1,8 +1,8 @@
 angular.module('apix').controller('MockApiCtrl', MockApiCtrl);
 
-MockApiCtrl.$inject = ['$stateParams', 'CommonService', 'ApixService', 'MockApiService'];
+MockApiCtrl.$inject = ['$stateParams', 'UtilService', 'ApixService', 'MockApiService'];
 
-function MockApiCtrl($stateParams, CommonService, ApixService, MockApiService) {
+function MockApiCtrl($stateParams, UtilService, ApixService, MockApiService) {
 
 	var vm = this;
 
@@ -101,7 +101,7 @@ function MockApiCtrl($stateParams, CommonService, ApixService, MockApiService) {
 	}
 
 	function formatResp() {
-		vm.formData.output = CommonService.format(vm.formData.output);
+		vm.formData.output = UtilService.format(vm.formData.output);
 	}
 
 	////////////////////////////// inner functions /////////////////////////////

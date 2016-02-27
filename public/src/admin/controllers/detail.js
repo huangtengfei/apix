@@ -1,8 +1,8 @@
 angular.module('apix').controller('DetailCtrl', DetailCtrl);
 
-DetailCtrl.$inject = ['$stateParams', '$state', '$location', '$anchorScroll', 'ApixService'];
+DetailCtrl.$inject = ['$stateParams', '$state', '$location', '$anchorScroll', 'AlertService', 'ApixService'];
 
-function DetailCtrl($stateParams, $state, $location, $anchorScroll, ApixService) {
+function DetailCtrl($stateParams, $state, $location, $anchorScroll, AlertService, ApixService) {
 
 	var vm = this;
 
@@ -20,7 +20,7 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, ApixService)
 	vm.locate = locate;	// 通过左侧目录定位右侧位置
 	vm.addGroup = addGroup;	// 添加一个api分组
 	vm.addApi = addApi;	// 添加一个api
-
+	vm.deleteApi = deleteApi;	// 删除一个api
 
 	////////////////////////// functions bind to view ///////////////////////////
 
@@ -40,6 +40,19 @@ function DetailCtrl($stateParams, $state, $location, $anchorScroll, ApixService)
 			sysName: $stateParams.sysName,
 			groupName: group.name
 		});
+	}
+
+	function deleteApi(api) {
+		AlertService.confirm({
+			title: '温馨提示',
+			content: '确定要删除这个API吗？'
+		}).then(function(){
+			ApixService.deleteApi(api._id, function(res){
+				init();
+			}, function(err){
+				console.log(err);
+			})
+		})
 	}
 
 	////////////////////////////// inner functions /////////////////////////////

@@ -33,6 +33,11 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         {{api.name}}
+                        <a ui-sref="EditApi({sysName:vm.formData.sysName, groupName: group.name, apiId: api._id})">
+                            <span class="glyphicon glyphicon-edit text-warning" style="top: 2px; cursor:pointer;" aria-hidden="true"></span>
+                        </a>
+                        <span class="glyphicon glyphicon-remove text-danger" style="top: 2px; cursor:pointer;"
+                              aria-hidden="true" ng-click="vm.deleteApi(api)"></span>
                         <a ui-sref="TestApi({apiId: api._id})" target="_blank">
                             <span class="label label-info pull-right">测试</span>
                         </a>

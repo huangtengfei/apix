@@ -14,6 +14,32 @@
 <body>
 
 	<div ui-view></div>
+
+	<script id="alertTpl" type="text/html">
+		<div class="modal fade in">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">{{title}}</h4>
+					</div>
+					<div class="modal-body">
+						<div class="modal-body">
+							<div class="alert-content">
+								<span ng-bind-html="content | trustHtml"></span>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-show="ok" ng-click="ok()">确定</button>
+						<button type="button" class="btn btn-default" ng-show="cancel" ng-click="cancel()">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
 	<script src="lib/jquery/jquery.min.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/angular/angular.min.js"></script>
@@ -37,6 +63,7 @@
 	<script src="src/admin/controllers/systems.js"></script>
 	<script src="src/admin/controllers/detail.js"></script>
 	<script src="src/admin/controllers/addApi.js"></script>
+	<script src="src/admin/controllers/editApi.js"></script>
 	<script src="src/admin/controllers/addGroup.js"></script>
 	<script src="src/admin/controllers/addSystem.js"></script>
 	<script src="src/admin/controllers/paramTips.js"></script>
@@ -46,6 +73,7 @@
 	<script src="src/admin/services/mockHttp.js"></script>
 	<script src="src/admin/services/mockApi.js"></script>
 	<script src="src/admin/services/common.js"></script>
+	<script src="src/admin/services/util.js"></script>
 	<script src="src/admin/services/data.js"></script>
 	<script src="src/admin/filters/admin.js"></script>
 </body>
