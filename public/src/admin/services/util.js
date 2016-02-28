@@ -1,8 +1,8 @@
 angular.module('apix').factory('UtilService', UtilService);
 
-UtilService.$inject = [];
+UtilService.$inject = ['$q', 'MockHttpService'];
 
-function UtilService() {
+function UtilService($q, MockHttpService) {
     return {
         format: function(txt, compress) {/* 格式化JSON源码(对象转换为JSON文本) */
             var indentChar = '    ';
@@ -53,6 +53,59 @@ function UtilService() {
             var isLast = true, indent = 0;
             notify('', data, isLast, indent, false);
             return draw.join('');
+        },
+        send: function(formData){
+
+            var defer = $q.defer();
+
+            var params = {},
+                output = '';
+            formData.params.forEach(function(item){
+                params[item.key] = item.value;
+            })
+            if(formData.method == 1){
+                MockHttpService.get(formData.url, params, function(res){
+                    output = JSON.stringify(res);
+                    defer.resolve(output);
+                }, function(err){
+                    console.log(err);
+                    defer.reject(err);
+                });
+            }else if(formData.method == 2){
+                var body = {};
+                formData.body.forEach(function(item){
+                    body[item.key] = item.value;
+                })
+                MockHttpService.post(formData.url, body, function(res){
+                    output = JSON.stringify(res);
+                    defer.resolve(output);
+                }, function(err){
+                    console.log(err);
+                    defer.reject(err);
+                })
+            }else if(formData.method == 3){
+                var body = {};
+                formData.body.forEach(function(item){
+                    body[item.key] = item.value;
+                })
+                MockHttpService.patch(formData.url, params, body, function(res){
+                    output = JSON.stringify(res);
+                    defer.resolve(output);
+                }, function(err){
+                    console.log(err);
+                    defer.reject(err);
+                })
+            }else if(formData.method == 4){
+                MockHttpService.remove(formData.url, params, function(res){
+                    output = JSON.stringify(res);
+                    defer.resolve(output);
+                }, function(err){
+                    console.log(err);
+                    defer.reject(err);
+                })
+            }
+
+            return defer.promise;
         }
     }
 }

@@ -39,6 +39,7 @@ base.getGroup = (req, res) => {
 };
 
 base.updateGroup = (req, res) => {
+
 	let params = req.query;
 	let groupData = req.body;
 	mongo.updateGroup(params, groupData, res);
@@ -46,8 +47,11 @@ base.updateGroup = (req, res) => {
 
 base.deleteGroup = (req, res) => {
 	let params = req.query;
-	console.log(params);
-	monk.deleteGroup(params, res);
+	if(Object.keys(params).length != 2){
+		res.sendStatus(404);
+	}else{
+		monk.deleteGroup(params, res);
+	}
 };
 
 base.getApis = (req, res) => {

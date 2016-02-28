@@ -1,8 +1,8 @@
 angular.module('apix').controller('ApiTestCtrl', ApiTestCtrl);
 
-ApiTestCtrl.$inject = ['$stateParams', 'UtilService', 'ApixService', 'MockHttpService'];
+ApiTestCtrl.$inject = ['$stateParams', 'UtilService', 'ApixService'];
 
-function ApiTestCtrl($stateParams, UtilService, ApixService, MockHttpService) {
+function ApiTestCtrl($stateParams, UtilService, ApixService) {
 
 	var vm = this;
 
@@ -59,28 +59,9 @@ function ApiTestCtrl($stateParams, UtilService, ApixService, MockHttpService) {
     }
 
 	function send() {
-		var params = {};
-		vm.formData.params.forEach(function(item){
-			params[item.key] = item.value;
-		})
-		if(vm.formData.method == 1){
-			MockHttpService.get(vm.formData.url, params, function(res){
-				vm.formData.output = JSON.stringify(res);
-			}, function(err){
-				console.log(err);
-			});
-		}else if(vm.formData.method == 2){
-			var body = {};
-			vm.formData.body.forEach(function(item){
-				body[item.key] = item.value;
-			})
-			MockHttpService.post(vm.formData.url, body, function(res){
-				vm.formData.output = JSON.stringify(res);
-			}, function(err){
-				console.log(err);
-			})
-		}
-
+        UtilService.send(vm.formData).then(function(res){
+            vm.formData.output = res;
+        })
 	}
 
 	function formatResp() {
@@ -108,5 +89,5 @@ function ApiTestCtrl($stateParams, UtilService, ApixService, MockHttpService) {
 		})
 	}
 
-	init();	
+	init();
 }
