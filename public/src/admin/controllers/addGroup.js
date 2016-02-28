@@ -43,9 +43,13 @@ function GroupAddCtrl($stateParams, $state, ApixService) {
 		}];
 
 		ApixService.createGroup(vm.group, function(res){
-			$state.go('Detail', {
-				sysName: $stateParams.sysName
-			})
+            if(res.errMsg){
+                vm.message = res.errMsg;
+            }else{
+                $state.go('Detail', {
+                    sysName: $stateParams.sysName
+                })
+            }
 		}, function(err){
 			console.log(err);
 		})

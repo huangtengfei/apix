@@ -50,9 +50,13 @@ function GroupEditCtrl($stateParams, $state, ApixService) {
 			name: $stateParams.groupName
 		}
 		ApixService.editGroup(params, groupData, function(res){
-			$state.go('Detail', {
-				sysName: $stateParams.sysName
-			})
+            if(res.errMsg){
+                vm.message = res.errMsg;
+            }else{
+                $state.go('Detail', {
+                    sysName: $stateParams.sysName
+                })
+            }
 		}, function(err){
 			console.log(err);
 		})

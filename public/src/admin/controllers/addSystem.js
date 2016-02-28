@@ -19,7 +19,11 @@ function SystemAddCtrl($window, $state, ApixService) {
 		vm.system.userId = $window.sessionStorage.userId;
 
 		ApixService.createSystem(vm.system, function(res){
-			$state.go('Systems');
+            if(res.errMsg){
+                vm.message = res.errMsg;
+            }else{
+                $state.go('Systems');
+            }
 		}, function(err){
 			console.log(err);
 		})

@@ -93,13 +93,25 @@ mongo.getSystems = (userId, res) => {
 };
 
 mongo.createSystem = (systemData, res) => {
-	let system = new SystemModel(systemData);
-	system.save((err, doc) => {
+	SystemModel.findOne({name: systemData.name}, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
 		}
-		return res.json(doc);
+		if(doc){
+			return res.json({
+				errMsg: 'System Name Already Exists'
+			});
+		}else{
+			let system = new SystemModel(systemData);
+			system.save((err, doc) => {
+				if(err){
+					console.log(err);
+					return res.sendStatus(500);
+				}
+				return res.json(doc);
+			})
+		}
 	})
 };
 
@@ -118,13 +130,25 @@ mongo.getGroups = (system, res) => {
 };
 
 mongo.createGroup = (groupData, res) => {
-	let group = new GroupModel(groupData);
-	group.save((err, doc) => {
+	GroupModel.findOne({system: groupData.system, name: groupData.name}, (err, doc) => {
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);
 		}
-		return res.json(doc);
+		if(doc){
+			return res.json({
+				errMsg: 'Group Name Already Exists'
+			});
+		}else{
+			let group = new GroupModel(groupData);
+			group.save((err, doc) => {
+				if(err){
+					console.log(err);
+					return res.sendStatus(500);
+				}
+				return res.json(doc);
+			})
+		}
 	})
 };
 
@@ -143,31 +167,54 @@ mongo.getGroup = (params, res) => {
 };
 
 mongo.updateGroup = (params, groupData, res) => {
-	GroupModel.update(params, {$set: groupData}, (err, doc) => {
-		if(err){
-			console.log(err);
-			return res.sendStatus(500);
-		}
-		if(doc){
-			if(groupData.name){
-				let apiParams = {
-					system: params.system,
-					group: params.name
-				}
-				ApiModel.update(apiParams, {$set: {group: groupData.name}}, { multi: true }, (err, doc) => {
+	// 如果修改group name，需要先检验重名，再更改group表，最后更改api表
+	if(groupData.name){
+		GroupModel.findOne({system: params.system, name: groupData.name}, (err, doc) => {
+			if(err){
+				console.log(err);
+				return res.sendStatus(500);
+			}
+			if(doc){
+				return res.json({
+					errMsg: 'Group Name Already Exists'
+				});
+			}else{
+				GroupModel.update(params, {$set: groupData}, (err, doc) => {
 					if(err){
 						console.log(err);
 						return res.sendStatus(500);
 					}
-					return res.json(doc);
+					if(doc){
+						let apiParams = {
+							system: params.system,
+							group: params.name
+						}
+						ApiModel.update(apiParams, {$set: {group: groupData.name}}, { multi: true }, (err, doc) => {
+							if(err){
+								console.log(err);
+								return res.sendStatus(500);
+							}
+							return res.json(doc);
+						})
+					}else{
+						return res.sendStatus(404);
+					}
 				})
-			}else{
-				return res.json(doc);
 			}
-		}else{
-			return res.sendStatus(404);
-		}
-	})
+		})
+	}else{
+		GroupModel.update(params, {$set: groupData}, (err, doc) => {
+			if(err){
+				console.log(err);
+				return res.sendStatus(500);
+			}
+			if(doc){
+				return res.json(doc);
+			}else{
+				return res.sendStatus(404);
+			}
+		})
+	}
 };
 
 mongo.getApis = (params, res) => {
