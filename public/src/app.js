@@ -6,6 +6,7 @@
 	app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise('/login');
 		$stateProvider
+            // 登录注册
 			.state('Login', {
 				url: '/login',
 				templateUrl: 'src/auth/templates/login.html',
@@ -14,10 +15,11 @@
 			})
 			.state('SignUp', {
 				url: '/sign-up',
-				templateUrl: 'src/auth/templates/signUp.html',
+				templateUrl: 'src/auth/templates/sign-up.html',
 				controller: 'SignUpCtrl',
 				controllerAs: 'vm'
 			})
+
 			// 主页面，里面有导航条，登录之后的页面都包含在这个页面中
 			.state('Main', {
 				abstract: true,
@@ -26,6 +28,8 @@
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})
+
+            // system相关
 			.state('Systems', {
 				parent: 'Main',
 				url: '/systems',
@@ -33,7 +37,17 @@
 				controller: 'SystemsCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})			
+			})
+            .state('AddSystem', {
+                parent: 'Main',
+                url: '/new-system',
+                templateUrl: 'src/admin/templates/add-system.html',
+                controller: 'SystemAddCtrl',
+                controllerAs: 'vm',
+                access: {requiredLogin: true}
+            })
+
+            // group相关
 			.state('Detail', {
 				url: '/systems/:sysName',
 				templateUrl: 'src/admin/templates/detail.html',
@@ -41,18 +55,10 @@
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})
-			.state('AddSystem', {
-				parent: 'Main',
-				url: '/new-system',
-				templateUrl: 'src/admin/templates/addSystem.html',
-				controller: 'SystemAddCtrl',
-				controllerAs: 'vm',
-				access: {requiredLogin: true}
-			})
 			.state('AddGroup', {
 				parent: 'Main',
 				url: '/systems/:sysName/new-group',
-				templateUrl: 'src/admin/templates/addGroup.html',
+				templateUrl: 'src/admin/templates/add-group.html',
 				controller: 'GroupAddCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
@@ -60,15 +66,17 @@
 			.state('EditGroup', {
 				parent: 'Main',
 				url: '/systems/:sysName/:groupName/edit-group',
-				templateUrl: 'src/admin/templates/editGroup.html',
+				templateUrl: 'src/admin/templates/edit-group.html',
 				controller: 'GroupEditCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})
+
+            // api相关
 			.state('AddApi', {
 				parent: 'Main',
 				url: '/systems/:sysName/:groupName/new-api',
-				templateUrl: 'src/admin/templates/addApi.html',
+				templateUrl: 'src/admin/templates/add-api.html',
 				controller: 'ApiAddCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
@@ -76,7 +84,7 @@
 			.state('EditApi', {
 				parent: 'Main',
 				url: '/systems/:sysName/:groupName/:apiId/edit-api',
-				templateUrl: 'src/admin/templates/editApi.html',
+				templateUrl: 'src/admin/templates/edit-api.html',
 				controller: 'ApiEditCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
@@ -84,23 +92,25 @@
 			.state('ParamTips', {
 				parent: 'Main',
 				url: '/param-tips',
-				templateUrl: 'src/admin/templates/paramTips.html',
+				templateUrl: 'src/admin/templates/param-tips.html',
 				controller: 'ParamTipsCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
-			})	
+			})
+
+            // test api
 			.state('TestApi', {
-				// parent: 'Main',
-				url: '/apis/:apiId',
-				templateUrl: 'src/admin/templates/testApi.html',
+				url: '/test-api/apis/:apiId',
+				templateUrl: 'src/admin/templates/test-api.html',
 				controller: 'ApiTestCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
 			})
+
+            // mock api
 			.state('MockApi', {
-				// parent: 'Main',
-				url: '/systems/:sysName/:groupName/mock-api',
-				templateUrl: 'src/admin/templates/mockApi.html',
+				url: '/mock-api/:sysName/:groupName',
+				templateUrl: 'src/admin/templates/mock-api.html',
 				controller: 'MockApiCtrl',
 				controllerAs: 'vm',
 				access: {requiredLogin: true}
